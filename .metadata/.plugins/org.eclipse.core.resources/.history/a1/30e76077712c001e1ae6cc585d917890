@@ -1,0 +1,71 @@
+package org.qcmg.hairpin.demo;
+
+import java.awt.image.BufferedImage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HairPinController {
+	
+	@Autowired
+	private  HairPinService hairPinService;
+	
+	
+	//https://bioweb01.qut.edu.au/benthTPM/genome.jsp  previous site
+	@GetMapping(path = "/submit_servlet_genome", produces = MediaType.TEXT_PLAIN_VALUE)
+//	@GetMapping("/submit_servlet_genome")
+    public String processRequest(@RequestParam("gene_id") String geneId,
+                                 @RequestParam("toggle_switch") String toggleSwitch) {
+        // Process the request parameters and generate the response
+        // You can perform any additional logic or operations here based on the parameters
+        
+        int image_width = 9000;
+        
+        String rawdata = toggleSwitch.equals("qld")? hairPinService.getLabData(geneId) : hairPinService.getQldData(geneId);        
+        BufferedImage image = hairPinService.createDiagram(rawdata);
+
+        String response = String.format("%04d", image_width)
+                          + hairPinService.encodeToBase64String(image, "png")
+                          + "#" + rawdata;
+        //debug
+
+        return response;
+
+    }
+	
+	//http://localhost:8080/hello?gene_id=1&toggle_switch=qld
+	@GetMapping("hello")
+    public String hello(@RequestParam("gene_id") String geneId,
+            @RequestParam("toggle_switch") String toggleSwitch) { 
+
+        // Process the request parameters and generate the response
+        // You can perform any additional logic or operations here based on the parameters
+        
+		String str = "Received gene_id: " + geneId + ", toggle_switch: " + toggleSwitch;
+   
+        return "hello: " + str;
+
+    }
+	
+ 
+	//https://bioweb01.qut.edu.au/benthTPM/genome.jsp  previous site
+	@GetMapping("/gene2Seq")
+    public String processGeneId(@RequestParam("gene_id") String geneId ) String toggleSwitch) {
+        // Process the request parameters and generate the response
+        // You can perform any additional logic or operations here based on the parameters
+        
+        
+        //String rawdata = toggleSwitch.equals("qld")? hairPinService.getLabData(geneId) : hairPinService.getQldData(geneId);     
+        
+		String rawdata = hairPinService.getLabData(geneId)
+        return rawdata;
+
+    }
+   
+
+
+}

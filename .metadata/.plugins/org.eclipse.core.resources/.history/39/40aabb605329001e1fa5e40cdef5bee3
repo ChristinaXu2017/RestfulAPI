@@ -1,0 +1,38 @@
+package org.qcmg.gendemo.hairPin;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "qld183_mirna_updated")
+public class Qld183 extends Lab360 {
+	@Id
+	@GeneratedValue
+	private Integer id;
+	
+//	private Integer pure_number;
+	
+	public Qld183(Integer id, Integer pure_number, String sequence, String precursor_seq, String structure, String chr,
+			String strand, String start) {
+		super(id, pure_number, sequence, precursor_seq, structure, chr, strand, start);
+		// TODO Auto-generated constructor stub
+	}
+	
+	/*
+	 *  String query3 = "SELECT * FROM qld183_mirna_updated WHERE id = ?";
+	 *             PreparedStatement pstmt3 = conn.prepareStatement(query3);
+            pstmt3.setString(1, geneName);
+            ResultSet rs = pstmt3.executeQuery();
+
+    String sequence = rs.getString("sequence");
+    String precursor_seq = rs.getString("precursor_seq");
+    String structure = rs.getString("structure");
+    String chr = rs.getString("chr");
+    String strand = rs.getString("strand");
+    String start = rs.getString("start");
+    qldData += sequence + "," + precursor_seq + "," + structure
+            + "," + chr + "," + strand + "," + start + " ";
+*/
+}

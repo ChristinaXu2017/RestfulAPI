@@ -1,0 +1,75 @@
+package org.qcmg.hairpin.helloworld;
+
+import org.qcmg.hairpin.demo.HairPinService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Base64;
+
+import javax.imageio.ImageIO;
+
+@Controller
+public class CircleController {
+	@Autowired
+	private  HairPinService hairPinService;
+
+    @GetMapping("/circle")
+    public String drawCircle(Model model) {
+    	
+		BufferedImage image = createDiagram();
+		String encodedImage = encodeToBase64String(image, "png");
+
+    	
+        // Pass the byte array to the model
+        model.addAttribute("circleImage", encodedImage);
+
+        //debug
+		String rawdata = hairPinService.getLabData( "1");
+		 model.addAttribute("rawdata", rawdata);
+		
+        return "cycle2"; // Return the name of the JSP file
+    }
+    
+    
+    public String encodeToBase64String(BufferedImage image, String type) {
+        String encodedString = null;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(image, type, bos);
+            byte[] imageBytes = bos.toByteArray();
+            encodedString = Base64.getEncoder().encodeToString(imageBytes);
+            bos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return encodedString;
+    } 
+   
+    
+	public BufferedImage createDiagram() {
+	       // Create a BufferedImage to draw the circle
+        int width = 100;
+        int height = 100;
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+
+        // Get the Graphics2D object to draw
+        Graphics2D g2d = image.createGraphics();
+
+        // Draw a small circle on the BufferedImage
+        g2d.setColor(Color.RED);
+        g2d.fillOval(25, 25, 50, 50);
+        // Clean up the Graphics2D object
+        g2d.dispose();
+
+		return image;
+		
+	} 
+    
+    
+}

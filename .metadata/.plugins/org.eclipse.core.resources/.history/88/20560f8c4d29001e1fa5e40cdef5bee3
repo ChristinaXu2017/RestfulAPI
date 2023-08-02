@@ -1,0 +1,45 @@
+package org.qcmg.gendemo.hairPin;
+
+import java.awt.image.BufferedImage;
+
+
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HairPinController {
+	
+	private  HairPinService hairPinService;
+	
+	@GetMapping(path = "/submit_servlet_genome", produces = MediaType.TEXT_PLAIN_VALUE)
+    public String processRequest(@RequestParam("gene_id") String geneId,
+                                 @RequestParam("toggle_switch") String toggleSwitch) {
+        // Process the request parameters and generate the response
+        String response = "Received gene_id: " + geneId + ", toggle_switch: " + toggleSwitch;
+        // You can perform any additional logic or operations here based on the parameters
+        
+        int image_width = 9000;
+        
+        String rawdata = toggleSwitch.equals("qld")? hairPinService.getLabData(geneId) : hairPinService.getQldData(geneId);        
+        BufferedImage image = hairPinService.createDiagram(rawdata);
+
+        response = String.format("%04d", image_width)
+                          + hairPinService.encodeToBase64String(image, "png")
+                          + "#" + rawdata;
+
+        return response;
+
+    }
+	
+	
+ 
+	
+    
+    
+
+
+}

@@ -1,0 +1,50 @@
+package org.qcmg.gendemo.hairPin;
+
+
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HairPinController {
+	@RequestMapping("genome-jsp")
+	public String genomeJsp() {
+		return "genome";
+	}
+	
+	
+	
+	
+	@GetMapping(path = "/submit_servlet_genome", produces = MediaType.TEXT_PLAIN_VALUE)
+    public String processRequest(@RequestParam("gene_id") String geneId,
+                                 @RequestParam("toggle_switch") String toggleSwitch) {
+        // Process the request parameters and generate the response
+        String response = "Received gene_id: " + geneId + ", toggle_switch: " + toggleSwitch;
+        // You can perform any additional logic or operations here based on the parameters
+
+        return response;
+    }
+	
+	
+    @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
+    public String processRequest() {
+        int image_width = 9000;
+        try {
+            String rawdatalab = getLabData();
+            BufferedImage image = createDiagram();
+
+            String response = String.format("%04d", image_width)
+                              + encodeToBase64String(image, "png")
+                              + "#" + rawdatalab;
+
+            return response;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error: An exception occurred during diagram generation.";
+        }
+    }
+	
+}

@@ -1,0 +1,14 @@
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        int image_width = 9000;
+        try ( PrintWriter out = response.getWriter()) {
+	    String rawdatalab = getLabData();
+	    BufferedImage image = createDiagram();
+            out.print(String.format("%04d", image_width));
+            out.print(encodeToBase64String(image, "png"));
+            out.print("#" + rawdatalab);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }

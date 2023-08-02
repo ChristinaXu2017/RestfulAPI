@@ -1,0 +1,15 @@
+1690091636771	Move 'image' to 'WEB-INF'
+1690091945907	Move 'image' to 'resources'
+1690097791135	Rename type 'hairPinController'
+1690112041805	Rename type 'Old183Repository'
+1690112264707	Delete element
+1690112272050	Delete element
+1690113101013	Delete element
+1690284758332	Rename package 'org.qcmg.gendemo'
+1690284782616	Rename package 'org.qcmg.gendemo.helloworld'
+1690284801625	Rename package 'org.qcmg.gendemo.hairPin'
+1690449115813	Move folder
+1690449136708	Move package
+1690451060554	Move file
+1690451064120	Move package
+1690458910276	Move file

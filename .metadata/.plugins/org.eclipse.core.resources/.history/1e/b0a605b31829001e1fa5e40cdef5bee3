@@ -1,0 +1,4 @@
+
+#sayHello.jsp
+spring.mvc.view.prefix=/META-INF/resources/
+spirg.mvc.view.suffix=.jsp

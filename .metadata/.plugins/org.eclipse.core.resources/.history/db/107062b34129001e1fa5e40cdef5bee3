@@ -1,0 +1,8 @@
+package org.qcmg.gendemo.hairPin;
+
+import org.qcmg.gendemo.todo.repository.Todo;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public class Lab360Repository extends JpaRepository< Lab360, Integer>{
+
+}

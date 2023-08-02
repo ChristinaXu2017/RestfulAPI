@@ -1,0 +1,2 @@
+INDEX VERSION 1.4+/Users/christix/Documents/Code/Eclipse/spring/xu/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3202820765.index

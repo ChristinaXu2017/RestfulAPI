@@ -1,0 +1,4 @@
+
+#sayHello.jsp
+spring.mvc.view.prefix=/WEB-INF/jsp/
+spirg.mvc.view.suffix=.jsp

@@ -1,0 +1,12 @@
+package org.qcmg.gendemo.hairPin;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class hairPinController {
+	@RequestMapping("genome-jsp")
+	public String genomeJsp() {
+		return "genome";
+	}
+}

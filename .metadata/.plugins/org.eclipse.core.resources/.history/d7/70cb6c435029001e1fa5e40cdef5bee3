@@ -1,0 +1,7 @@
+package org.qcmg.gendemo.hairPin;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface Qld183Repository extends JpaRepository<Qld183, Integer> {
+	Qld183 findByPure_number(Integer pure_number);
+}

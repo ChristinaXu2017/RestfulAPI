@@ -1,0 +1,82 @@
+package org.qcmg.gendemo.hairPin;
+
+import java.awt.image.BufferedImage;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+
+import org.qcmg.gendemo.todo.Todo;
+import org.springframework.stereotype.Service;
+import java.io.ByteArrayOutputStream;
+
+@Service
+public class HairPinService {
+	
+	
+	private static List<Todo> todos = new ArrayList<>();
+	
+	private static int todosCount = 0;
+	
+	static {
+		todos.add(new Todo(++todosCount, "in28minutes","Get AWS Certified", 
+							LocalDate.now().plusYears(10), false ));
+		todos.add(new Todo(++todosCount, "in28minutes","Learn DevOps", 
+				LocalDate.now().plusYears(11), false ));
+		todos.add(new Todo(++todosCount, "in28minutes","Learn Full Stack Development", 
+				LocalDate.now().plusYears(12), false ));
+	}
+	
+	public List<Todo> findByUsername(String username){
+		Predicate<? super Todo> predicate = 
+				todo -> todo.getUsername().equalsIgnoreCase(username);
+		return todos.stream().filter(predicate).toList();
+	}
+	
+	public Todo addTodo(String username, String description, LocalDate targetDate, boolean done) {
+		Todo todo = new Todo(++todosCount,username,description,targetDate,done);
+		todos.add(todo);
+		return todo;
+	}
+	
+	
+	
+    public String encodeToBase64String(BufferedImage image, String type) {
+        String encodedString = null;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(image, type, bos);
+            byte[] imageBytes = bos.toByteArray();
+            encodedString = Base64.getEncoder().encodeToString(imageBytes);
+            bos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return encodedString;
+    } 
+
+    
+    //"SELECT * FROM lab360_mirna WHERE id = '" + geneName + "'"
+    public String getLabData(String geneName) {
+        String labData = "";
+        try {
+            String query1 = "SELECT * FROM lab360_mirna WHERE id = ?";
+            PreparedStatement pstmt1 = conn.prepareStatement(query1);
+            pstmt1.setString(1, geneName);
+            ResultSet rs = pstmt1.executeQuery();
+            while (rs.next()) {
+                String sequence = rs.getString("sequence");
+                String precursor_seq = rs.getString("precursor_seq");
+                String structure = rs.getString("structure");
+                String chr = rs.getString("chr");
+                String strand = rs.getString("strand");
+                String start = rs.getString("start");
+                labData += sequence + "," + precursor_seq + "," + structure
+                        + "," + chr + "," + strand + "," + start + " ";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return labData;
+    }
+}

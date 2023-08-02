@@ -1,0 +1,21 @@
+package org.qcmg.gendemo.hairPin;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class hairPinController {
+	@RequestMapping("genome-jsp")
+	public String genomeJsp() {
+		return "genome";
+	}
+	
+	
+	@GetMapping(path = "/submit_servlet_genome")
+	public HelloWorldBean helloWorldPathVariable(@PathVariable String name) {
+		return new HelloWorldBean(String.format("Hello World, %s", name)); 
+	}
+	
+	
+}

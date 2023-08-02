@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;11-web-application/src/main/resources/META-INF/resources/WEB-INF/jsp/qVisulisa copy.jsp&apos; to &apos;qVisulShort.jsp&apos;" description="Rename resource &apos;qVisulisa copy.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/META-INF/resources/WEB-INF/jsp/qVisulisa copy.jsp" name="qVisulShort.jsp" stamp="1690586933852" updateReferences="true"/>
+</session>

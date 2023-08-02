@@ -1,0 +1,19 @@
+package org.qcmg.gendemo.hairPin;
+
+public class Qld183 {
+	/*
+	 *  String query3 = "SELECT * FROM qld183_mirna_updated WHERE id = ?";
+	 *             PreparedStatement pstmt3 = conn.prepareStatement(query3);
+            pstmt3.setString(1, geneName);
+            ResultSet rs = pstmt3.executeQuery();
+
+    String sequence = rs.getString("sequence");
+    String precursor_seq = rs.getString("precursor_seq");
+    String structure = rs.getString("structure");
+    String chr = rs.getString("chr");
+    String strand = rs.getString("strand");
+    String start = rs.getString("start");
+    qldData += sequence + "," + precursor_seq + "," + structure
+            + "," + chr + "," + strand + "," + start + " ";
+*/
+}

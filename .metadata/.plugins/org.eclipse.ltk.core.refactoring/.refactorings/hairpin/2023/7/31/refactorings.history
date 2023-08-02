@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Todo.java&apos; to &apos;hairpin/src/main/java/org.qcmg.hairpin.helloworld&apos;&#x0A;- Original project: &apos;hairpin&apos;&#x0A;- Destination element: &apos;hairpin/src/main/java/org.qcmg.hairpin.helloworld&apos;&#x0A;- Original element: &apos;org.qcmg.hairpin.demo.Todo.java&apos;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.qcmg.hairpin.helloworld" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;org.qcmg.hairpin.demo{Todo.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1690787164899" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,29 @@
+package org.qcmg.gendemo.hairPin;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HairPinController {
+	@RequestMapping("genome-jsp")
+	public String genomeJsp() {
+		return "genome";
+	}
+	
+	
+	
+	
+	@GetMapping(path = "/submit_servlet_genome")
+    public String processRequest(@RequestParam("gene_id") String geneId,
+                                 @RequestParam("toggle_switch") String toggleSwitch) {
+        // Process the request parameters and generate the response
+        String response = "Received gene_id: " + geneId + ", toggle_switch: " + toggleSwitch;
+        // You can perform any additional logic or operations here based on the parameters
+
+        return response;
+    }
+	
+}
