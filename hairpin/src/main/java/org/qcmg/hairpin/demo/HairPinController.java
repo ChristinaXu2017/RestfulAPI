@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
 
 import org.springframework.ui.Model;
 
-//@RestController
 @Controller
 public class HairPinController {
 	
@@ -26,78 +28,75 @@ public class HairPinController {
 		super();
 		this.labRepo = lab;
 		
-		//debug
-		Lab360 entity = new Lab360(1, 156, "CUGACAGAAGAGAGaGAGCAC(CUGACAGAAGAGAGUGAGCAC)", 
-				"ttggaattcatagaGTTTGCTCTTTGATCATGTCcgtctctctgcatttcaggaacactaactctgggagattttgcaagattatgatgatcatctttaatgtaggcatgatcacctcctttaaccatccacggcagagttggtgaaatgccggttgaattgtgcagaaggttttgtgagtgggCtgacagaagagagagagcaCaagag",
-				"..............((((.((((((..(((.(((((.((((((((((((((((..(((((((((((....................................................................))))))))))).....))...))))..))))))).........)))))))))))..))))))...)))).......",		
-				"NbLab360C08",	"+",	87606248);
-
-		Lab360 entity2 = new Lab360(2, 156, "CUGACAGAAGAGAGaGAGCAC(CUGACAGAAGAGAGUGAGCAC)", 
-				"ttggaattcatagaGTTTGCTCTTTGATCATGTCcgtctctctgcatttcaggaacactaactctgggagattttgcaagattatgatgatcatctttaatgtaggcatgatcacctcctttaaccatccacggcagagttggtgaaatgccggttgaattgtgcagaaggttttgtgagtgggCtgacagaagagagagagcaCaagag",
-				"..............((((.((((((..(((.(((((.((((((((((((((((..(((((((((((....................................................................))))))))))).....))...))))..))))))).........)))))))))))..))))))...)))).......",		
-				"NbLab360C08",	"+",	87606248);
-
-		//save twice
-		labRepo.save(entity);
-		labRepo.save(entity2);
+//		//debug
+//		Lab360 entity = new Lab360(1, 156, "CUGACAGAAGAGAGaGAGCAC(CUGACAGAAGAGAGUGAGCAC)", 
+//				"ttggaattcatagaGTTTGCTCTTTGATCATGTCcgtctctctgcatttcaggaacactaactctgggagattttgcaagattatgatgatcatctttaatgtaggcatgatcacctcctttaaccatccacggcagagttggtgaaatgccggttgaattgtgcagaaggttttgtgagtgggCtgacagaagagagagagcaCaagag",
+//				"..............((((.((((((..(((.(((((.((((((((((((((((..(((((((((((....................................................................))))))))))).....))...))))..))))))).........)))))))))))..))))))...)))).......",		
+//				"NbLab360C08",	"+",	87606248);
+//
+//		Lab360 entity2 = new Lab360(2, 156, "CUGACAGAAGAGAGaGAGCAC(CUGACAGAAGAGAGUGAGCAC)", 
+//				"ttggaattcatagaGTTTGCTCTTTGATCATGTCcgtctctctgcatttcaggaacactaactctgggagattttgcaagattatgatgatcatctttaatgtaggcatgatcacctcctttaaccatccacggcagagttggtgaaatgccggttgaattgtgcagaaggttttgtgagtgggCtgacagaagagagagagcaCaagag",
+//				"..............((((.((((((..(((.(((((.((((((((((((((((..(((((((((((....................................................................))))))))))).....))...))))..))))))).........)))))))))))..))))))...)))).......",		
+//				"NbLab360C08",	"+",	87606248);
+//
+//		//save twice
+//		labRepo.save(entity);
+//		labRepo.save(entity2);
 	}
 
-	// http://localhost:8080/rawdata?gene_id=1
-	@GetMapping("/rawdata")
+	// http://localhost:8080/rawdata?geneId=1
+	@GetMapping("/rawdata1")
 	@ResponseBody
-    public String processGeneId1(@RequestParam("geneId") String geneId) {       
+    public String processGeneId1(@Valid @RequestParam("geneId") String geneId) {       
 		String rawdata = hairPinService.getLabData(geneId);
         return rawdata;
     }
+
 		
-	// http://localhost:8080/miRNA?gene_id=1
-	@RequestMapping(value="miRNA",method = RequestMethod.GET)
-    public String loadmiRNAPage(ModelMap model) {    
+	// http://localhost:8080/miRNA 
+	@RequestMapping(value="miRNA1",method = RequestMethod.GET)
+    public String loadmiRNAPage() {    
        return "genome";
-       //return "aa";
     }
 
 	
-	@RequestMapping(value="miRNA",method = RequestMethod.POST)
+	@RequestMapping(value="miRNA1",method = RequestMethod.POST)
 	public String processmiRNA( @RequestParam String mirnaid, Model model) {
 			
 		String rawdata = hairPinService.getLabData( mirnaid);
-		model.addAttribute("rawdata",rawdata);
-		 
-		 
+		
+		if(rawdata == null ||  rawdata.length() == 0) {
+			model.addAttribute("found","no related microRNA found in database for " + mirnaid);
+			 model.addAttribute("rawdata",rawdata);
+
+			 return "genome";
+		}
+		
 		BufferedImage image = hairPinService.createDiagram(rawdata);
 		String encodedImage = hairPinService.encodeToBase64String(image, "png")	;
-
 		 model.addAttribute("image", encodedImage);
-		 model.addAttribute("mirnaid",mirnaid);
- 		 
+		 model.addAttribute("mirnaid",mirnaid);		 
 		 return "genome";
     }
 
 	
-    @GetMapping("/circle2")
+    @GetMapping("/circle21")
     public String drawCircle(Model model) {
     	
 		String rawdata = hairPinService.getLabData( "1");
 		BufferedImage image = hairPinService.createDiagram(rawdata);
 		String encodedImage = hairPinService.encodeToBase64String(image, "png")	;
-
-    	
+   	
         // Pass the byte array to the model
         model.addAttribute("circleImage", encodedImage);
         model.addAttribute("rawdata", rawdata);
 
-
         return "cycle2"; // Return the name of the JSP file
     }	
-	
-	
-	
-	
-			
+				
 	//https://bioweb01.qut.edu.au/benthTPM/genome.jsp  previous site
 //	@GetMapping(path = "/submit_servlet_genome", produces = MediaType.TEXT_PLAIN_VALUE)
-	@GetMapping("/submit_servlet_genome")
+	@GetMapping("/submit_servlet_genome1")
 	@ResponseBody
 	public String processRequest(ModelMap model) {
 //	    public String processRequest(@RequestParam("gene_id") String geneId,@RequestParam("toggle_switch") String toggleSwitch) {

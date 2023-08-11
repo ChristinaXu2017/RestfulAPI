@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -29,41 +31,71 @@ public class CircleController {
         // Pass the byte array to the model
         model.addAttribute("circleImage", encodedImage);
 
-        //debug
-		String rawdata = hairPinService.getLabData( "1");
-		
-	       String[] splitbyspace = rawdata.split(" ");
-
-	        for (int genome = 0; genome < splitbyspace.length; genome++) {
-
-	            String[] instances = splitbyspace[genome].split(",");
-
-	            String red_sequence = instances[0].replaceAll("\\(.*?\\)", "").toUpperCase().replaceAll("U", "T");
-	   		 model.addAttribute("red_sequence", red_sequence);
-	   		 model.addAttribute("instances0", instances[0]);
-	   		model.addAttribute("splitbyspace0", splitbyspace[0]);
-	   		
-	   		
-	   		
-	   		
-            String sequence = instances[1].toUpperCase();
-            String symbols = instances[2].replaceAll("\\s", "");
-	   		 model.addAttribute("sequence", sequence);
-	   		model.addAttribute("symbols", symbols);
-
-	        }
-		
-		 model.addAttribute("rawdata", rawdata);
-		 
-		 
-		 
-		 
-		 
-		 
+//        //debug
+//		String rawdata = hairPinService.getLabData( "1");
+//		
+//	       String[] splitbyspace = rawdata.split(" ");
+//
+//	        for (int genome = 0; genome < splitbyspace.length; genome++) {
+//
+//	            String[] instances = splitbyspace[genome].split(",");
+//
+//	            String red_sequence = instances[0].replaceAll("\\(.*?\\)", "").toUpperCase().replaceAll("U", "T");
+//	   		 model.addAttribute("red_sequence", red_sequence);
+//	   		 model.addAttribute("instances0", instances[0]);
+//	   		model.addAttribute("splitbyspace0", splitbyspace[0]);
+//	   		
+//	   		
+//	   		
+//	   		
+//            String sequence = instances[1].toUpperCase();
+//            String symbols = instances[2].replaceAll("\\s", "");
+//	   		 model.addAttribute("sequence", sequence);
+//	   		model.addAttribute("symbols", symbols);
+//
+//	        }
+//		
+//		 model.addAttribute("rawdata", rawdata);
 		 
 		
         return "cycle2"; // Return the name of the JSP file
-    }
+    }		 
+		 
+	@GetMapping(path = "/basicauth")
+	public String basicAuthCheck() {
+		return "Success"; 
+	}	 
+		 
+    	// to ./src/main/resources/META-INF/resources/WEB-INF/jsp/sayHello.jsp
+    	@RequestMapping("say-hello-jsp")
+    	//@ResponseBody  //return jsp but not string to browser
+    	public String sayHelloJsp() {
+    		return "sayHello";
+    	}
+    	
+    	@RequestMapping("gene-jsp")
+    	public String genJsp() {
+    		return "gene";
+    	}
+    	
+
+    	@RequestMapping("say-hello-html")
+    	@ResponseBody  //return string to browser
+    	public String sayHelloHtml() {
+    		StringBuffer sb = new StringBuffer();
+    		sb.append("<html>");
+    		sb.append("<head>");
+    		sb.append("<title> My First HTML Page - Changed</title>");
+    		sb.append("</head>");
+    		sb.append("<body>");
+    		sb.append("My first html page with body - Changed");
+    		sb.append("</body>");
+    		sb.append("</html>");
+    		
+    		return sb.toString();
+    	}	 
+		 
+
     
     
     public String encodeToBase64String(BufferedImage image, String type) {

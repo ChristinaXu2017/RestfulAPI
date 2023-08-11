@@ -3,23 +3,22 @@ package org.qcmg.hairpin.demo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "LAB360")
-public class Lab360 {
+public class LAB360 {
 	
-	@Id
-	@GeneratedValue
-	private Integer id;
+	@Id	 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	
 	//camel case the column name for findby method in repository
 	//ok: "La360 findByPureNumber(Integer pureNumber);"  
 	//error:  "La360 findByPure_number(Integer pure_number);"  
 	@Column(name="pure_number")
 	private Integer pureNumber;
-
+	
 	private String sequence;
 	
 	private String precursor_seq;
@@ -32,8 +31,8 @@ public class Lab360 {
 	
 	private Integer start;
 	
-	public Lab360() {} //this default constructor is compulsory, otherwise can't autoWire
-	public Lab360(Integer id, Integer pure_number, String sequence, String precursor_seq, String structure, String chr,
+	public LAB360() {} //this default constructor is compulsory, otherwise can't autoWire
+	public LAB360(int id, Integer pure_number, String sequence, String precursor_seq, String structure, String chr,
 			String strand, Integer start) {
 		super();
 		this.id = id;
@@ -94,11 +93,11 @@ public class Lab360 {
 	
 	/*
 	 * 
-	 *     //"SELECT * FROM lab360_mirna WHERE id = '" + geneName + "'"
+	 *     //"SELECT * FROM TEST360_mirna WHERE id = '" + geneName + "'"
     public String getLabData(String geneName) {
         String labData = "";
         try {
-            String query1 = "SELECT * FROM lab360_mirna WHERE id = ?";
+            String query1 = "SELECT * FROM TEST360_mirna WHERE id = ?";
             PreparedStatement pstmt1 = conn.prepareStatement(query1);
             pstmt1.setString(1, geneName);
             ResultSet rs = pstmt1.executeQuery();
@@ -116,7 +115,7 @@ public class Lab360 {
       public String getLabDataPureNum(String geneName) {
         String labData = "";
         try {
-            String query2 = "SELECT * FROM lab360_mirna WHERE pure_number = ?";
+            String query2 = "SELECT * FROM TEST360_mirna WHERE pure_number = ?";
             PreparedStatement pstmt2 = conn.prepareStatement(query2);
             pstmt2.setString(1, geneName);
             ResultSet rs = pstmt2.executeQuery();

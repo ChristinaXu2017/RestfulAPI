@@ -20,10 +20,10 @@
   
 
       <div class="image-section2">
-        <img src="/image/homepage1.png" alt="Image 1">
+        <img src="/image/homepage1.png" alt="Image 1" width="400" height="200">
       </div>
       <div class="image-section2">
-        <img src="/image/homepage2.png" alt="Image 2">
+        <img src="/image/homepage2.png" alt="Image 2" width="400" height="200">
       </div>
     </div>
 
@@ -57,9 +57,9 @@
    
         <h1>Displaying MicroRNA hairpin structure</h1>
         
-<!--  
+
         <h2>${rawdata} (rawdata)</h2>
-        <h2>${sequence} (sequence)</h2>
+<!--    <h2>${sequence} (sequence)</h2>
         <h2>${symbols} (symbols)</h2>
  -->	
         <div style="text-align: center;">
@@ -69,9 +69,10 @@
 	        	<input type="submit">
 	        </form>   
 	        
+	        <h2>${found}</h2>
 	        <div style="text-align: center;">
 	            <div style="display: inline-block;">
-	       	         <img class="image-main" id="img_1_gene" src="data:image/png;base64, ${image}" width="1400" height="200">
+	       	         <img class="image-main" id="img_1_gene" src="data:image/png;base64, ${image}" width="1400" height="2000">
 	            </div>
        		</div>
 	           

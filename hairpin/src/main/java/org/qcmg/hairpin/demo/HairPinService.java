@@ -21,8 +21,6 @@ public class HairPinService {
 	
 	@Autowired
 	private Lab360Repository labRepo;
-	@Autowired
-	private Qld183Repository qldRepo;
 	
 	static { }
 		
@@ -32,12 +30,11 @@ public class HairPinService {
     // Set the color for drawing the text
     Color blackColor = Color.BLACK;
     Color redColor = Color.RED;
-
-
-    //"SELECT * FROM lab360_mirna WHERE id = '" + geneName + "'"
-    public String getLabData(String geneId) {
+    
+    
+    public List<LAB360> getLabs(String geneId) {
     	
-    	List<Lab360> labs = new ArrayList<Lab360>();
+    	List<LAB360> labs = new ArrayList<>();
     	//query where pure_number_number = ?
     	if(geneId.startsWith("mir")) {  
     		int pure_number = -1;
@@ -54,20 +51,18 @@ public class HairPinService {
 	    	}catch(NumberFormatException e) {
 	    		//now pure_number_number = -1  		
 	    	}
-    		Lab360 lab = labRepo.findById(id).orElse(null); 
-    		if(lab != null) labs.add(lab);   		  		
+    		LAB360 lab = labRepo.findById(id).orElse(null); 
+    		if(lab != null) labs.add(lab);  		
     	}
     	
-    	String labData = "";
-    	for(Lab360 lab : labs) {
-    		labData += lab.toString() + " ";
-    	}
-    	    	
-        return labData;
+    	return labs;   	
     }
 
-	public String getQldData(String geneId) {
-	   	Qld183 lab; 
+
+    //"SELECT * FROM TEST360_mirna WHERE id = '" + geneName + "'"
+    public String getLabData(String geneId) {
+    	
+    	List<LAB360> labs = new ArrayList<LAB360>();
     	//query where pure_number_number = ?
     	if(geneId.startsWith("mir")) {  
     		int pure_number = -1;
@@ -76,7 +71,7 @@ public class HairPinService {
 	    	}catch(NumberFormatException e) {
 	    		//now pure_number_number = -1  		
 	    	}
-    		lab = qldRepo.findByPureNumber(pure_number);    		
+    		labs = labRepo.findByPureNumber(pure_number);    		
     	} else {
     		int id = -1;
     		try {
@@ -84,13 +79,18 @@ public class HairPinService {
 	    	}catch(NumberFormatException e) {
 	    		//now pure_number_number = -1  		
 	    	}
-    		lab = qldRepo.findById(id).orElse(null);  		  		
+    		LAB360 lab = labRepo.findById(id).orElse(null); 
+    		if(lab != null) labs.add(lab);  		
     	}
     	
-    	String labData = lab != null? lab.toString() : null; 
-		
+    	String labData = "";
+    	for(LAB360 lab : labs) {
+    		labData += lab.toString() + " ";
+    	}
+    	    	
         return labData;
-	}
+    }
+
 		
 	private void draw_symbols2(Graphics2D g2d,String sequence, String symbols, int startIndex, int endIndex, int genome, int i, int j, int column_no) {
         while (i < j) {

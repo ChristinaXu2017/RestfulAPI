@@ -1,74 +1,25 @@
 package org.qcmg.hairpin.helloworld;
 
-import java.time.LocalDate;
-
-import org.qcmg.hairpin.demo.Lab360;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
-//@RestController
-@Controller
+@RestController
 public class HelloWorldController {
-
 	
-	@GetMapping(path = "/basicauth")
-	public String basicAuthCheck() {
-		return "Success"; 
-	}
-
 	@GetMapping(path = "/hello-world")
-	@ResponseBody
-	public String helloWorld() {
-		return "Hello World v2"; 
-	}
-	
-	// to ./src/main/resources/META-INF/resources/WEB-INF/jsp/sayHello.jsp
-	@RequestMapping("say-hello-jsp")
-	//@ResponseBody  //return jsp but not string to browser
-	public String sayHelloJsp() {
-		return "sayHello";
-	}
-	
-	@RequestMapping("gene-jsp")
-	public String genJsp() {
-		return "gene";
-	}
-	
-	// http://localhost:8080/miRNA?gene_id=1
-	@RequestMapping(value="todopage",method = RequestMethod.GET)
-    public String loadmiRNAPage(ModelMap model) {    
-		Todo todo = new Todo(0, "aa", "", LocalDate.now().plusYears(1), false);
-		//since we add todo to model, todo is bind and jsp can call it
-		model.put("todo", todo);
-		
-		
-		//debug
-		Lab360 lab360 = new Lab360(1, 156, "CUGACAGAAGAGAGaGAGCAC(CUGACAGAAGAGAGUGAGCAC)", 
-				"ttggaattcatagaGTTTGCTCTTTGATCATGTCcgtctctctgcatttcaggaacactaactctgggagattttgcaagattatgatgatcatctttaatgtaggcatgatcacctcctttaaccatccacggcagagttggtgaaatgccggttgaattgtgcagaaggttttgtgagtgg",
-				"..............((((.((((((..(((.(((((.((((((((((((((((..(((((((((((....................................................................))))))))))).....))...))))..))))))).........)))))))))))..))))))...)))).......",
-				"NbLab360C08",	"+",	87606248);
-		model.put("lab360", lab360);
-		
-       return "todo";
+    public String helloWorld() {
+        return "Hello World v2"; 
     }
-	
-	@RequestMapping("say-hello-html")
-	@ResponseBody  //return string to browser
-	public String sayHelloHtml() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("<html>");
-		sb.append("<head>");
-		sb.append("<title> My First HTML Page - Changed</title>");
-		sb.append("</head>");
-		sb.append("<body>");
-		sb.append("My first html page with body - Changed");
-		sb.append("</body>");
-		sb.append("</html>");
-		
-		return sb.toString();
-	}
+    
+    @GetMapping(path = "/hello-world-bean")
+    public HelloWorldBean helloWorldBean() {
+        return new HelloWorldBean("Hello World Bean v1"); 
+    }
+    
+    @GetMapping(path = "/hello-world/path-variable/{name}")
+    public HelloWorldBean helloWorldPathVariable(@PathVariable String name) {
+        return new HelloWorldBean(String.format("Hello World, %s", name)); 
+    }   
+
 }
