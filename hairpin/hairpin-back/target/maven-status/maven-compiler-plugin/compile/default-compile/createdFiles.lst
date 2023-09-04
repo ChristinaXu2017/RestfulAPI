@@ -1,0 +1,15 @@
+org/qcmg/hairpin/demo/HairPinRestController.class
+org/qcmg/hairpin/helloworld/HelloBean.class
+org/qcmg/hairpin/HairpinApplication.class
+org/qcmg/hairpin/favorite/FavoriteService.class
+org/qcmg/hairpin/HairpinApplication$1.class
+org/qcmg/hairpin/favorite/FavoriteJpaResource.class
+org/qcmg/hairpin/basic/BasicAuthenticationSecurityConfiguration1.class
+org/qcmg/hairpin/helloworld/HelloController.class
+org/qcmg/hairpin/demo/LAB360.class
+org/qcmg/hairpin/helloworld/HelloRestController.class
+org/qcmg/hairpin/demo/HairPinService.class
+org/qcmg/hairpin/demo/HairPinController.class
+org/qcmg/hairpin/favorite/FavoriteRepository.class
+org/qcmg/hairpin/favorite/Favorite.class
+org/qcmg/hairpin/demo/Lab360Repository.class
