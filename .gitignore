@@ -25,6 +25,7 @@ buildNumber.properties
 #node.js project
 */logs
 *.log*
+package-lock.json 
 
 # Dependency directories
 node_modules/
