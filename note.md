@@ -17,3 +17,8 @@ refer to [spring boot feature](https://spring.io/projects/spring-boot)
   - dependencies:
      - spring web for restAPI, tomcat
      - 
+- unzip the downloaded folder to eclipse: File::import:: existing maven project
+    - pom.xml
+    - maven dependencies
+    - @springbootapplication class with main method
+- 
