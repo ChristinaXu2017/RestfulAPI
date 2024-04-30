@@ -16,8 +16,10 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
 - `demo:` go to [spring initializr](https://start.spring.io/)
   - java; maven; latest spring boot version but not snapshot; jar; java17
   - spring boot provides variety of starter dependencies:
-     - spring web for restAPI, tomcat
-     - spring-boot-starter-web and spring-boot-starter-test
+     - `spring web` for restAPI, tomcat: spring-boot-starter-web and spring-boot-starter-test
+     - `spring boot actuator`: see below
+     - `spring boot DevTools`: startup server automatically during developping
+      
 - unzip the downloaded folder to eclipse: File::import:: existing maven project
     - pom.xml
     - maven dependencies
@@ -48,9 +50,9 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
   - Spring boot Actuator
     - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-actuator</artifactId></dependency>  
     - management.endpoints.web.exposure.include=health,metrics  or management.endpoints.web.exposure.include=*
-    - localhost:8000/actuator/
+    - localhost:8000/actuator/   : see java, dependecy, bean, jvm etc. eg. http.server.requests: request number, time consuming etc. 
 
-
+- `demo maybe` spring boot vs spring mvc vs spring udemy 69
 
 
 
