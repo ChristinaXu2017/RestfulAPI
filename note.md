@@ -46,3 +46,17 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
 - `demo maybe` application.properties
   - Spirng boot DevTools: Udemy: 64: step 08 - build Faster with spring Boot DevTools ( if have time demo this part) : it can automatically restart server during developping (code updated). 
   
+- Spring boot Actuator
+  - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-actuator</artifactId></dependency>
+
+
+
+
+
+
+
+
+
+
+
+  
