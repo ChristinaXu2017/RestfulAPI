@@ -12,6 +12,7 @@ refer to [spring boot feature](https://spring.io/projects/spring-boot)
 -  manager non functional features, see spring.nfrs
 
 ### start up spring boot project
+https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-springboot
 - go to [spring initializr](https://start.spring.io/)
   - java; maven; latest spring boot version but not snapshot; jar; java17
   - dependencies:
@@ -21,4 +22,6 @@ refer to [spring boot feature](https://spring.io/projects/spring-boot)
     - pom.xml
     - maven dependencies
     - @springbootapplication class with main method
-- 
+      
+- build a simple rest API using spring boot
+  - 
