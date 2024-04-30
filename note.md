@@ -7,8 +7,8 @@ refer to [spring boot feature](https://spring.io/projects/spring-boot)
   
 ### dependency management
 - before spring boot we have to
-    -  add many framework to pom.xml, see spring.dependency.png
-    -  configure on web.xml, see spring.web.xml.configure
-    -  spring configuration, see spirng.configure.png
+    -  dependency management on pom.xml, see spring.dependency.png
+    -  define web app configure on web.xml, see spring.web.xml.configure
+    -  manage spring bean on context.xml, see spirng.configure.png
     -  manager non functional features, see spring.nfrs
 - 
