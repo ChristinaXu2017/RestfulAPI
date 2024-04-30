@@ -15,9 +15,9 @@ refer to [spring boot feature](https://spring.io/projects/spring-boot)
 https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-springboot
 - `demo:` go to [spring initializr](https://start.spring.io/)
   - java; maven; latest spring boot version but not snapshot; jar; java17
-  - dependencies:
+  - spring boot provides variety of starter dependencies:
      - spring web for restAPI, tomcat
-     - 
+     - spring-boot-starter-web and spring-boot-starter-test
 - unzip the downloaded folder to eclipse: File::import:: existing maven project
     - pom.xml
     - maven dependencies
@@ -33,4 +33,13 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
 
 - `demo:` HelloController.java: helloWorld() and helloWorldPathVariable(@PathVariable String name)
    - http://localhost:8080/hello-world/path-variable/{name}
+ 
+- `demo:` auto configuration
+  - there are many autoconfiguration classes
+  - org.springframework.boot.autoconfigure.web package is related for restapi
+  - logging.level.org.springframework=debug refer to [application.properties](02-springboot/src/main/resources/application.properties).  now you run app, you can see log from app run std report "Conditions Evaluation Report": 
+  - Tomcat is configured for you (EmbededWebServerFactoryCustomizerAutoConfiguration).
+  - let's see dispatcherServletAutoConfigureation source code, open type (command/Ctrl+shift+T); you can see dispatchservlet is configured, means web application of rest API is enabled.
+  -  you can see Error page is auto-confiugured for you: it will pop up "Whitelabel Error page... status=404" when url is not exists.
+  
 
