@@ -24,4 +24,4 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
     - @springbootapplication class with main method
       
 - build a simple rest API using spring boot
-  - 
+  - @RestController see [helloWorld inside hairpin](https://github.com/ChristinaXu2017/RestfulAPI/blob/main/hairpin/hairpin-back/src/main/java/org/qcmg/hairpin/helloworld/HelloController.java)
