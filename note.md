@@ -57,6 +57,10 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
 
 - `demo maybe` spring boot vs spring mvc vs spring udemy 69
 
+## hairpin project 
+- JPA: hairpin/hairpin-back/src/main/java/org/qcmg/hairpin/demo/Lab360Repository.java and LAB360.java.
+  - it help to write custome query, such as. repository.count(); findAll() follow name conversiton (Udemy 83)
+
 
 
 
