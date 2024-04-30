@@ -37,18 +37,18 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
 - `demo:` auto configuration
   - there are many autoconfiguration classes
   - org.springframework.boot.autoconfigure.web package is related for restapi
-  - logging.level.org.springframework=debug refer to [application.properties](02-springboot/src/main/resources/application.properties).  now you run app, you can see log from app run std report "Conditions Evaluation Report": 
   - Tomcat is configured for you (EmbededWebServerFactoryCustomizerAutoConfiguration).
   - let's see dispatcherServletAutoConfigureation source code, open type (command/Ctrl+shift+T); you can see dispatchservlet is configured, means web application of rest API is enabled.
   -  you can see Error page is auto-confiugured for you: it will pop up "Whitelabel Error page... status=404" when url is not exists.
   - class annoated with @@ConfigurationProperties(...) can retrive settings from application.properties (Udemy: 66: step 10 - ConfigureationProperties)
+  - Spirng boot DevTools: Udemy: 64: step 08 - build Faster with spring Boot DevTools ( if have time demo this part) : it can automatically restart server during developping (code updated).
     
 - `demo maybe` application.properties
-  - Spirng boot DevTools: Udemy: 64: step 08 - build Faster with spring Boot DevTools ( if have time demo this part) : it can automatically restart server during developping (code updated). 
-  
-- Spring boot Actuator
-  - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-actuator</artifactId></dependency>
-
+  - logging.level.org.springframework=debug refer to [application.properties](02-springboot/src/main/resources/application.properties).  now you run app, you can see log from app run std report "Conditions Evaluation Report": 
+  - Spring boot Actuator
+    - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-actuator</artifactId></dependency>  
+    - management.endpoints.web.exposure.include=health,metrics  or management.endpoints.web.exposure.include=*
+    - localhost:8000/actuator/
 
 
 
