@@ -13,7 +13,7 @@ refer to [spring boot feature](https://spring.io/projects/spring-boot)
 
 ### start up spring boot project
 https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-springboot
-- go to [spring initializr](https://start.spring.io/)
+- `demo:` go to [spring initializr](https://start.spring.io/)
   - java; maven; latest spring boot version but not snapshot; jar; java17
   - dependencies:
      - spring web for restAPI, tomcat
@@ -25,9 +25,12 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
       
 - build a simple rest API using spring boot
   - see [helloWorld inside hairpin](https://github.com/ChristinaXu2017/RestfulAPI/blob/main/hairpin/hairpin-back/src/main/java/org/qcmg/hairpin/helloworld/HelloController.java)
-    - demo HelloController.java: helloWorld() and helloWorldPathVariable(@PathVariable String name)
     - @RestController: means every method annotated with @RequestMapping etc in this class return types are directly written to HTTP response
     - @Controller: means method returns view (HTML, JSP ). eg return "cycle2" means return cycle2.jsp file;
         - unless annotated both @GetMapping("/rawdata1") and @ResponseBody to the method, it will return tyeps to HTTP responses as method inside @RestController class
     - @RequestMapping handle all types of HTTP requests (GET, POST, PUT, DELETE, etc.) when you specify the method type.
     - @GetMapping is a shortcut for @RequestMapping(method = RequestMethod.GET), only handle GET type HTTP requests.
+
+- `demo:` HelloController.java: helloWorld() and helloWorldPathVariable(@PathVariable String name)
+   - http://localhost:8080/hello-world/path-variable/{name}
+
