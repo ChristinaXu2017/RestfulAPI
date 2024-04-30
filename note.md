@@ -19,6 +19,9 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
      - `spring web` for restAPI, tomcat: spring-boot-starter-web and spring-boot-starter-test
      - `spring boot actuator`: see below
      - `spring boot DevTools`: startup server automatically during developping
+     - `spring data JDBC`: no sql query with limited code. 
+     - `spring data JPA`: java persistence API: eg. hairpin/hairpin-back/src/main/java/org/qcmg/hairpin/demo/Lab360Repository.java . JPA simplify code and almost replace JDBC. However JDBC still needed to execute complex SQL. 
+     - `H2 database`: H2 database is more for developping and debug
       
 - unzip the downloaded folder to eclipse: File::import:: existing maven project
     - pom.xml
