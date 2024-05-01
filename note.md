@@ -108,5 +108,6 @@ When you include the Spring Security starter dependency in your Spring Boot appl
   	⁃	http://localhost:3030/mirna
 
 
-
+ldap.userDn=${LDAP_USER_DN} # set env in ~/.bashrc
+ldap.password=${LDAP_PASSWORD}
   
