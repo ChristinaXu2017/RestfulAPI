@@ -19,10 +19,10 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
      - `spring web` for restAPI, tomcat: spring-boot-starter-web and spring-boot-starter-test
      - `spring boot actuator`: see below
      - `spring boot DevTools`: startup server automatically during developping
-     - `spring data JDBC`: no sql query with limited code. 
+     - (may not)`spring data JDBC`: no sql query with limited code. 
      - `spring data JPA`: java persistence API: eg. hairpin/hairpin-back/src/main/java/org/qcmg/hairpin/demo/Lab360Repository.java . JPA simplify code and almost replace JDBC. However JDBC still needed to execute complex SQL. 
-     - `H2 database`: H2 database is more for developping and debug
-      
+     - (may not) `H2 database`: H2 database is more for developping and debug
+     - `spring security` dependency 
 - unzip the downloaded folder to eclipse: File::import:: existing maven project
     - pom.xml
     - maven dependencies
@@ -60,10 +60,38 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
 ## hairpin project 
 - JPA: hairpin/hairpin-back/src/main/java/org/qcmg/hairpin/demo/Lab360Repository.java and LAB360.java.
   - it help to write custome query, such as. repository.count(); findAll() follow name conversiton (Udemy 83)
-
-
-
-
+- demo hairpin/hairpin-back/src/main/java/org/qcmg/hairpin/helloworld/HelloController.java
+    - add DeleteMapping, putMapping, PostMaaping, like todo project todo/todo-restAPI-spring/src/main/java/com/in28minutes/rest/webservices/restfulwebservices/todo/TodoJpaResource.java 
+- enable Cross origin request
+- axoi in react to access api
+- setup Auth Context
+- connection to mySQL
+- spring security:
+  - concept:  
+    - Authentication: userid/password; finger/face scan; mobile code; BasicAuthenticationFilter
+    - Authorization: AuthorizationFilter
+    - security filter chain:
+      - BasicAuthenticationFilter, AuthorizationFilter,
+      - CorsFilter(cross origin resource sharing),
+      - CsrFilter (update request in case malicous web use stored authentication)
+      - login/logout page filter
+      - exceptiontranslationFilter
+    - Form Authentication
+    - Basici Authentication: not recomend for production
+    - JWT Authentication
+    - CSRF: to protect the cross-site request Forgery (some website use your cookie to access your bank)
+      - create token with every request. here spring will create csrf token but not JWT token
+    - CORS
+    - OAuth
+  - by Default everyting is protected
+    - a chain of filters ensure proper authentication and authorization
+    - form authentication with session cookie;
+ - `spring security` dependency:
+   - generate security password and launch defaulte security filter chain for each run
+   - provide default login page  Udemy 303
+   - `demo` helloworld.java with  above password and "user" s username
+   - hairpin use env to store credential: eg. spring.datasource.username=${RDS_USERNAME:serverUser}
+     
 
 
 
