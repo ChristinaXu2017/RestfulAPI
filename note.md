@@ -66,8 +66,9 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
 - axoi in react to access api
 - setup Auth Context
 - connection to mySQL
-- spring security:
-  - concept:  
+  
+### spring security:
+When you include the Spring Security starter dependency in your Spring Boot application, Spring Boot automatically configures a default security configuration for your application. You can then further customize this configuration to suit your needs. spring security includes:  
     - Authentication: userid/password; finger/face scan; mobile code; BasicAuthenticationFilter
     - Authorization: AuthorizationFilter
     - security filter chain:
@@ -92,7 +93,19 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
    - `demo` helloworld.java with  above password and "user" s username
    - hairpin use env to store credential: eg. spring.datasource.username=${RDS_USERNAME:serverUser}
      
-
+## run hairpin full statck
+### run on local with docker
+⁃	my microRNA publication: https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-12-r126
+	⁃	docker run mysql_benth
+	⁃	run backend 
+	  ⁃	source ~/.bashrc
+  	⁃	java17 -jar /Users/christix/Documents/Code/Eclipse/spring/xu/hairpin/hairpin-0.0.1-SNAPSHOT.jar
+  	⁃	try api test: chrome-extension://aejoelaoggembcahagimdiliamlcdmfm/index.html#requests or
+  	⁃	http://localhost:5050/swagger-ui/index.html#/
+	⁃	run front
+	  ⁃	cd /Users/christix/Documents/Code/react/xu/hairpin-app; 
+  	⁃	PORT=3030 npm start &
+  	⁃	http://localhost:3030/mirna
 
 
 
