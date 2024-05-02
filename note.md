@@ -1,6 +1,6 @@
 ## why spring boot
 [microservices architecture ](https://www.bing.com/images/search?q=microservices+architecture&form=HDRSC3&first=1) <br>
-[spring boot web application includes:](https://www.bing.com/images/search?view=detailV2&ccid=xoKsqSEp&id=EC33797EF0256EA2E91E023C8E0FF478D04A29B7&thid=OIP.xoKsqSEpNgO0nHRzQW7PzAHaD5&mediaurl=https%3a%2f%2fmiro.medium.com%2fmax%2f1104%2f0*gRDrg7AZtZ6FJJg5.png&exph=580&expw=1104&q=web+application+concepts+spring+boot&simid=608011496897670007&FORM=IRPRST&ck=C173FDD7058CE4490C60128040041A34&selectedIndex=2&itb=0&ajaxhist=0&ajaxserp=0) <br>
+[spring boot web application includes:](https://medium.com/featurepreneur/spring-boot-for-beginner-62dd9785bb44)<br>
 refer to [spring boot feature](https://spring.io/projects/spring-boot)
 - It's built on top of the Spring Framework and simplifies its setup and usage.
 - It provides a simpler approach to start Spring projects by auto-configuring the setup based on the included dependencies. 
@@ -15,7 +15,8 @@ refer to [spring boot feature](https://spring.io/projects/spring-boot)
 
 ### start up spring boot project
 https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-springboot
-- `demo:` go to [spring initializr](https://start.spring.io/)
+#### `demo:` 
+- go to [spring initializr](https://start.spring.io/)
   - java; maven; latest spring boot version but not snapshot; jar; java17
   - spring boot provides variety of starter dependencies:
      - `spring web` for restAPI, tomcat: spring-boot-starter-web and spring-boot-starter-test
@@ -24,12 +25,34 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
      - `spring data JDBC`: no sql query with limited code. 
      - `spring data JPA`: java persistence API: eg. hairpin/hairpin-back/src/main/java/org/qcmg/hairpin/demo/Lab360Repository.java . JPA simplify code and almost replace JDBC. However JDBC still needed to execute complex SQL. 
      -  `H2 database`: H2 database is more for developping and debug
-     - `spring security` dependency 
-- unzip the downloaded folder to eclipse: File::import:: existing maven project
-    - pom.xml
-    - maven dependencies
+     - `spring security` dependency
+    
+- auto configuration on pom.xml 
+  - maven dependencies: there are many autoconfiguration classes
+  - org.springframework.boot.autoconfigure.web package is related for restapi
+  - Tomcat is configured for you (EmbededWebServerFactoryCustomizerAutoConfiguration).
+  - let's see dispatcherServletAutoConfigureation source code, open type (command/Ctrl+shift+T); you can see dispatchservlet is configured, means web application of rest API is enabled.
+  -  you can see Error page is auto-confiugured for you: it will pop up "Whitelabel Error page... status=404" when url is not exists.
+  - class annoated with @@ConfigurationProperties(...) can retrive settings from application.properties (Udemy: 66: step 10 - ConfigureationProperties)
+  - Spirng boot DevTools: Udemy: 64: step 08 - build Faster with spring Boot DevTools ( if have time demo this part) : it can automatically restart server during developping (code updated).
+     
+- launch it from Eclipse
+    - unzip the downloaded folder to eclipse: File::import:: existing maven project
     - @springbootapplication class with main method
-      
+    - add "server.port=8080" to application.propertie;
+      - http://localhost:8080   # shows a default login form (username: user; password: copy from console)
+      - http://localhost:8080/actuator # shows 
+    - select HairpinApplication.java > run as java application   	  
+	  - http://localhost:5050/hello-world     # show a string DemoRestController.java
+	  - http://localhost:5050/hello-world/name # show a string with parameter variale  DemoRestController.java
+	  - http://localhost:5050/miRNA/156 # show one object HairPinRestController.java
+	  - http://localhost:5050/miRNA/mir156 # show a list of object HairPinRestController.java
+	  - http://localhost:5050/cycle     # MVC to display cycle2.jsp in old day (HelloMVC.java)
+  ```
+    # default setting is prot 5050? you can stop if and reuse 
+    pid=`lsof -i :5050 | tail -1 | awk ‘{print $2}’` && kill -9 $pid 
+  ```
+#### show code
 - build a simple rest API using spring boot
   - see [helloWorld inside hairpin](https://github.com/ChristinaXu2017/RestfulAPI/blob/main/hairpin/hairpin-back/src/main/java/org/qcmg/hairpin/helloworld/HelloController.java)
     - @RestController: means every method annotated with @RequestMapping etc in this class return types are directly written to HTTP response
@@ -38,17 +61,6 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
     - @RequestMapping handle all types of HTTP requests (GET, POST, PUT, DELETE, etc.) when you specify the method type.
     - @GetMapping is a shortcut for @RequestMapping(method = RequestMethod.GET), only handle GET type HTTP requests.
 
-- `demo:` HelloController.java: helloWorld() and helloWorldPathVariable(@PathVariable String name)
-   - http://localhost:8080/hello-world/path-variable/{name}
- 
-- `demo:` auto configuration
-  - there are many autoconfiguration classes
-  - org.springframework.boot.autoconfigure.web package is related for restapi
-  - Tomcat is configured for you (EmbededWebServerFactoryCustomizerAutoConfiguration).
-  - let's see dispatcherServletAutoConfigureation source code, open type (command/Ctrl+shift+T); you can see dispatchservlet is configured, means web application of rest API is enabled.
-  -  you can see Error page is auto-confiugured for you: it will pop up "Whitelabel Error page... status=404" when url is not exists.
-  - class annoated with @@ConfigurationProperties(...) can retrive settings from application.properties (Udemy: 66: step 10 - ConfigureationProperties)
-  - Spirng boot DevTools: Udemy: 64: step 08 - build Faster with spring Boot DevTools ( if have time demo this part) : it can automatically restart server during developping (code updated).
     
 - `demo maybe` application.properties
   - logging.level.org.springframework=debug refer to [application.properties](02-springboot/src/main/resources/application.properties).  now you run app, you can see log from app run std report "Conditions Evaluation Report": 
