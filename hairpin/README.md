@@ -1,10 +1,6 @@
 ## launch backend
-- create jar   or keep develpping from Eclipse, eg. Version: 2024-03 (4.31.0)
-  - Spring Boot 3+ works only with Java 17+
-  - git clone https://github.com/ChristinaXu2017/RestfulAPI.git
-  - Eclipse > File > import > Maven > Existing Maven projects
-  - select HairpinApplication.java > run as java application
-- install database on docker
+
+### install database on docker
   - launch docker deskop after installation. eg. download the one for mac with apple chip
   - create myql container based on mysql:8-oracle image
   ```
@@ -74,5 +70,17 @@
       mysql> LOAD DATA INFILE '/var/lib/mysql-files/LAB.csv' INTO TABLE lab360 FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
       ```
     
-
-
+### launch spring app on Eclipse 
+create jar   or keep develpping from Eclipse, eg. Version: 2024-03 (4.31.0)
+  - Spring Boot 3+ works only with Java 17+
+  - git clone https://github.com/ChristinaXu2017/RestfulAPI.git
+  - Eclipse > File > import > Maven > Existing Maven projects
+  - select HairpinApplication.java > run as java application
+  - http://localhost:5050/hello-world
+  - http://localhost:5050/hello-world/name
+  - http://localhost:5050/Favorites/5
+  - http://localhost:5050/miRNA/156
+  ```
+    # default setting is prot 5050? you can stop if and reuse 
+    pid=`lsof -i :5050 | tail -1 | awk ‘{print $2}’` && kill -9 $pid 
+  ```
