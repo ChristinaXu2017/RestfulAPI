@@ -69,6 +69,22 @@
       ```
       mysql> LOAD DATA INFILE '/var/lib/mysql-files/LAB.csv' INTO TABLE lab360 FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
       ```
+ - command for sql query <Details>
+ 
+   ```
+    mysql -u root -p
+    Enter password: admin
+    mysql> use benth_2023;
+    mysql> show tables
+    mysql> SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'lab360';
+    mysql> select * from lab360 where pure_number = 156;  // return 94 records
+    mysql> select distinct pure_number from lab360;   // 156, 157 are good for testing
+  
+   ```
+ 
+ 
+ 
+ </Details>
     
 ### launch spring app on Eclipse 
 create jar   or keep develpping from Eclipse, eg. Version: 2024-03 (4.31.0)
