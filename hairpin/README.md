@@ -82,8 +82,6 @@
   
    ```
  
- 
- 
  </Details>
     
 ### launch spring app on Eclipse 
@@ -92,6 +90,8 @@ create jar   or keep develpping from Eclipse, eg. Version: 2024-03 (4.31.0)
   - git clone https://github.com/ChristinaXu2017/RestfulAPI.git
   - Eclipse > File > import > Maven > Existing Maven projects
   - select HairpinApplication.java > run as java application
+  - ` HelloController.java: helloWorld() and helloWorldPathVariable(@PathVariable String name)
+  - http://localhost:8080/hello-world/path-variable/{name}
   - http://localhost:5050/hello-world     # show a string DemoRestController.java
   - http://localhost:5050/hello-world/name # show a string with parameter variale  DemoRestController.java
   - http://localhost:5050/miRNA/156 # show one object HairPinRestController.java
