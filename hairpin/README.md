@@ -84,3 +84,5 @@ create jar   or keep develpping from Eclipse, eg. Version: 2024-03 (4.31.0)
     # default setting is prot 5050? you can stop if and reuse 
     pid=`lsof -i :5050 | tail -1 | awk ‘{print $2}’` && kill -9 $pid 
   ```
+
+### launch react app on VS code
