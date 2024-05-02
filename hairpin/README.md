@@ -92,10 +92,11 @@ create jar   or keep develpping from Eclipse, eg. Version: 2024-03 (4.31.0)
   - git clone https://github.com/ChristinaXu2017/RestfulAPI.git
   - Eclipse > File > import > Maven > Existing Maven projects
   - select HairpinApplication.java > run as java application
-  - http://localhost:5050/hello-world
-  - http://localhost:5050/hello-world/name
-  - http://localhost:5050/Favorites/5
-  - http://localhost:5050/miRNA/156
+  - http://localhost:5050/hello-world     # show a string DemoRestController.java
+  - http://localhost:5050/hello-world/name # show a string with parameter variale  DemoRestController.java
+  - http://localhost:5050/miRNA/156 # show one object HairPinRestController.java
+  - http://localhost:5050/miRNA/mir156 # show a list of object HairPinRestController.java
+  - http://localhost:5050/cycle     # MVC to display cycle2.jsp in old day (HelloMVC.java)
   ```
     # default setting is prot 5050? you can stop if and reuse 
     pid=`lsof -i :5050 | tail -1 | awk ‘{print $2}’` && kill -9 $pid 
