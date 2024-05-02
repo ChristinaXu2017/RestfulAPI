@@ -86,3 +86,12 @@ create jar   or keep develpping from Eclipse, eg. Version: 2024-03 (4.31.0)
   ```
 
 ### launch react app on VS code
+- cd /Users/xu102/Documents/gitHub/RestfulAPI/hairpin/hairpin-front
+- npm install react-scripts --save # first time if you react is not yet installed
+- PORT=3030 npm start &
+- http://localhost:3030/mirna
+
+
+
+
+
