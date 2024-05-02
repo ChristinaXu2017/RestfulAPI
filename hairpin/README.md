@@ -14,7 +14,8 @@
 
   ```
   - `docker exec -it mysql_benth mysql -u root -p `, access database container interactively, here password is "admin"
-  - create table on the pop up-ed mysql client <Details>
+  - `mysql> use benth_2023;`
+  - `mysql> CREATE TABLE lab360 (... ` # create table on the pop up-ed mysql client <Details>
       CREATE TABLE lab360 (
        id INT AUTO_INCREMENT PRIMARY KEY,
         miR_ID VARCHAR(2550),
@@ -51,6 +52,27 @@
         pri_right_range VARCHAR(255),
         structure TEXT
       );
-
-
   </Details> 
+  
+  - load data into table
+    - `docker cp /Users/christix/Desktop/LAB.csv mysql_benth:/var/lib/mysql-files/`   <Details>
+      ```
+        # you have to put file under mysql configured location, which is below
+        mysql> SHOW VARIABLES LIKE 'secure_file_priv';
+        +------------------+-----------------------+
+        | Variable_name    | Value                 |
+        +------------------+-----------------------+
+        | secure_file_priv | /var/lib/mysql-files/ |
+        +------------------+-----------------------+
+        1 row in set (0.03 sec)
+        
+      ```
+      </Details>
+    - `chmod a+r /var/lib/mysql-files/LAB.csv` # grant permission after inspect to the container through docker desktop
+    - load file to database, here “LOAD DATA INFILE” but not “LOAD DATA LOCAL INFILE” means your file is already on server side
+      ```
+      mysql> LOAD DATA INFILE '/var/lib/mysql-files/LAB.csv' INTO TABLE lab360 FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+      ```
+    
+
+
