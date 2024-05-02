@@ -1,5 +1,6 @@
 ## why spring boot
 [microservices architecture ](https://www.bing.com/images/search?q=microservices+architecture&form=HDRSC3&first=1) <br>
+[spring boot web application includes:](https://www.bing.com/images/search?view=detailV2&ccid=xoKsqSEp&id=EC33797EF0256EA2E91E023C8E0FF478D04A29B7&thid=OIP.xoKsqSEpNgO0nHRzQW7PzAHaD5&mediaurl=https%3a%2f%2fmiro.medium.com%2fmax%2f1104%2f0*gRDrg7AZtZ6FJJg5.png&exph=580&expw=1104&q=web+application+concepts+spring+boot&simid=608011496897670007&FORM=IRPRST&ck=C173FDD7058CE4490C60128040041A34&selectedIndex=2&itb=0&ajaxhist=0&ajaxserp=0) <br>
 refer to [spring boot feature](https://spring.io/projects/spring-boot)
 - It's built on top of the Spring Framework and simplifies its setup and usage.
 - It provides a simpler approach to start Spring projects by auto-configuring the setup based on the included dependencies. 
