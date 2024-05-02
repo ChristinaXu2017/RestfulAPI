@@ -41,7 +41,10 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
     - @springbootapplication class with main method
     - add "server.port=8080" to application.propertie;
       - http://localhost:8080   # shows a default login form (username: user; password: copy from console)
-      - http://localhost:8080/actuator # shows 
+      - http://localhost:8080/actuator # : see java, dependecy, bean, jvm etc. eg. http.server.requests: request number, time consuming etc. 
+   	 - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-actuator</artifactId></dependency>  
+   	 - management.endpoints.web.exposure.include=health,metrics  or management.endpoints.web.exposure.include=*
+   	 - 
     - select HairpinApplication.java > run as java application   	  
 	  - http://localhost:5050/hello-world     # show a string DemoRestController.java
 	  - http://localhost:5050/hello-world/name # show a string with parameter variale  DemoRestController.java
@@ -61,15 +64,12 @@ https://github.com/in28minutes/master-spring-and-spring-boot/tree/main/02-spring
     - @RequestMapping handle all types of HTTP requests (GET, POST, PUT, DELETE, etc.) when you specify the method type.
     - @GetMapping is a shortcut for @RequestMapping(method = RequestMethod.GET), only handle GET type HTTP requests.
 
-    
 - `demo maybe` application.properties
   - logging.level.org.springframework=debug refer to [application.properties](02-springboot/src/main/resources/application.properties).  now you run app, you can see log from app run std report "Conditions Evaluation Report": 
   - Spring boot Actuator
     - <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-actuator</artifactId></dependency>  
     - management.endpoints.web.exposure.include=health,metrics  or management.endpoints.web.exposure.include=*
     - localhost:8000/actuator/   : see java, dependecy, bean, jvm etc. eg. http.server.requests: request number, time consuming etc. 
-
-- `demo maybe` spring boot vs spring mvc vs spring udemy 69
 
 ## hairpin project 
 - JPA: hairpin/hairpin-back/src/main/java/org/qcmg/hairpin/demo/Lab360Repository.java and LAB360.java.
