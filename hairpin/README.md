@@ -4,3 +4,53 @@
   - git clone https://github.com/ChristinaXu2017/RestfulAPI.git
   - Eclipse > File > import > Maven > Existing Maven projects
   - select HairpinApplication.java > run as java application
+- install database on docker
+  - launch docker deskop after installation. eg. download the one for mac with apple chip
+  - create myql container based on mysql:8-oracle image
+  ```
+  # you can set one or multi user account to environment variable
+  # AWS RDS not allow username “server_user” and pw length < 8; so add another account into env while creating docker
+  docker run --detach --env MYSQL_ROOT_PASSWORD=admin  --env MYSQL_USER=server_user --env MYSQL_PASSWORD=1234567 --env MYSQL_USER=serverUser --env MYSQL_PASSWORD=12345678 --env MYSQL_DATABASE=benth_2023 --name mysql_benth --publish 3306:3306 mysql:8-oracle 
+
+  ```
+  - `docker exec -it mysql_benth mysql -u root -p `, access database container interactively, here password is "admin"
+  - create table on the pop up-ed mysql client <Details>
+      CREATE TABLE lab360 (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+        miR_ID VARCHAR(2550),
+        miR VARCHAR(255),
+        number VARCHAR(255),
+        pure_number INT,
+        new_pure_number INT,
+        miRNA_order INT,
+        sequence VARCHAR(255),
+        chr VARCHAR(255),
+        strand ENUM('+', '-'),
+        start INT,
+        precursor_seq VARCHAR(255),
+        Total_mature_reads_include_extra INT,
+        Total_star_reads INT,
+        Total_LAB_mature_reads INT,
+        Total_LAB_star_reads INT,
+        Total_QLD_mature_reads INT,
+        Total_QLD_star_reads INT,
+        LAB_FLOWER_mature INT,
+        LAB_FLOWER_star INT,
+        QLD_FLOWER_mature INT,
+        QLD_FLOWER_star INT,
+        LAB_ROOT_mature INT,
+        LAB_ROOT_star INT,
+        LAB_SEED_mature INT,
+        LAB_SEED_star INT,
+        QLD_SEED_mature INT,
+        QLD_SEED_star INT,
+        read_same_direction INT,
+        read_both_direction INT,
+        genomic_location INT,
+        pri_left_range VARCHAR(255),
+        pri_right_range VARCHAR(255),
+        structure TEXT
+      );
+
+
+  </Details> 
