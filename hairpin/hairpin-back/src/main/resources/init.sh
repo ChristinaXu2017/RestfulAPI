@@ -7,6 +7,7 @@ docker run -d \
     --name mysql-container \
     mysql:8-oracle
 
+sleep 10 # wait 10sec to let container set up
 # copy local files to container
 docker cp $(pwd)/init.sql mysql-container:/var/lib/mysql-files/init.sql
 docker cp $(pwd)/LAB.csv  mysql-container:/var/lib/mysql-files/LAB.csv
