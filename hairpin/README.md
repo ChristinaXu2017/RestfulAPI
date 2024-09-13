@@ -1,8 +1,10 @@
 ## launch three tier web application (hairpin)
 
 ### install database on docker or RDS
-  - launch docker deskop after installation. eg. download the one for mac with apple chip
-  - create myql container based on mysql:8-oracle image
+  - launch docker deskop after installation. eg. download the one for mac with apple chip 
+  - cd ./hairpin-back/src/main/resources && bash init.sh
+     - it create mysql container based on mysql:8-oracle image
+     - create database, load csv file to table
   
 ### launch spring app on Eclipse 
 create jar   or keep develpping from Eclipse, eg. Version: 2024-03 (4.31.0)
