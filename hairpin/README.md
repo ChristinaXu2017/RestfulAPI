@@ -12,8 +12,25 @@ create jar   or keep develpping from Eclipse, eg. Version: 2024-03 (4.31.0)
   - git clone https://github.com/ChristinaXu2017/RestfulAPI.git
   - Eclipse > File > import > Maven > Existing Maven projects
   - select HairpinApplication.java > run as java application
-  - http://localhost:5050/miRNA/156 # show one object HairPinRestController.java
-  - http://localhost:5050/miRNA/mir156 # show a list of object HairPinRestController.java
+    - http://localhost:5050/miRNA/156 # show one object HairPinRestController.java
+    - http://localhost:5050/miRNA/mir156 # show a list of object HairPinRestController.java
+  - or run inside container java > run as maven build, set Goals: spring-boot:buid-image; then launch container
+       ```
+        docker network create my-network
+        docker network connect my-network mysql-container
+        docker run -d \
+            -p 5050:5050 \
+            --platform linux/amd64 \
+            --name hairC \
+            --network my-network \
+            -e RDS_HOSTNAME=mysql-container \
+            -e RDS_PORT=3306 \
+            -e RDS_DB_NAME=benth_2023 \
+            -e RDS_USERNAME=serverUser \
+            -e RDS_PASSWORD=12345678 \
+            <image>
+       
+       ```
 
 ### launch react app on VS code
 - cd /.../RestfulAPI/hairpin/hairpin-front
