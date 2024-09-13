@@ -1,4 +1,7 @@
-# RestfulAPI
+# RestfulAPI projects
+## testCode
+It is a temporary project just for code test purpose
+
 ## hairpin
 A full stack tool to draw a hairpin structure for MicroRNA sequence.
 
