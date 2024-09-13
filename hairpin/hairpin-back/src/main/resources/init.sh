@@ -1,7 +1,7 @@
 docker run -d \
-    -e MYSQL_ROOT_PASSWORD=1234 \
-    -e MYSQL_USER=user \
-    -e MYSQL_PASSWORD=1234 \
+    -e MYSQL_ROOT_PASSWORD=12345678 \
+    -e MYSQL_USER=serverUser \
+    -e MYSQL_PASSWORD=12345678 \
     -e MYSQL_DATABASE=benth_2023 \
     -p 3306:3306 \
     -v $(pwd):/var/lib/mysql-files \
