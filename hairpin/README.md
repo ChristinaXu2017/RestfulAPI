@@ -15,6 +15,7 @@ create jar   or keep develpping from Eclipse, eg. Version: 2024-03 (4.31.0)
     - http://localhost:5050/miRNA/156 # show one object HairPinRestController.java
     - http://localhost:5050/miRNA/mir156 # show a list of object HairPinRestController.java
   - or run inside container java > run as maven build, set Goals: spring-boot:buid-image; then launch container
+    - docker run -d -p 6000:5050 --platform linux/amd64 --name hairD ec or
        ```
         docker network create my-network
         docker network connect my-network mysql-container
