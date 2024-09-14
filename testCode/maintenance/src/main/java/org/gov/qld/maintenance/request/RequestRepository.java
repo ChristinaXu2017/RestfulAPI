@@ -8,7 +8,7 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 	List<Request> findById(long id);
 	
     // Find a list of requests by priority
-    List<Request> findByPoriority(Request.Priority poriority);
+    List<Request> findByPriority(Request.Priority poriority);
     
     // return the first avaible record for test
     Request findFirstByOrderByIdAsc();

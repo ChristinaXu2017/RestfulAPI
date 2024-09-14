@@ -6,7 +6,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
 @Entity
 @Table(name = "requests")
 public class Request {
@@ -16,21 +15,37 @@ public class Request {
     private String type;
 
     @Enumerated(EnumType.STRING)
-    private Priority poriority;
+    private Priority priority;
     private String description;
+    
+    // admin only column
+    private Boolean approval;
+    private String comments;
 
     // Default constructor
-    public Request() {
-    }
+    public Request() {}
 
-    // Parameterized constructor
-    public Request(long id, String type, Priority poriority, String description) {
+    // for user post
+    public Request(long id, String theType, Priority poriority, String description) {
         this.id = id;
-        this.type = type;
-        this.poriority = poriority;
+        this.type = theType;
+        this.priority = poriority;
         this.description = description;
+        this.approval = null;
+        this.comments = null;
     }
-
+    
+    // Parameterized constructor for sql insert
+    public Request(long id, String theType, Priority poriority, String description, Boolean approval, String comments) {
+        this.id = id;
+        this.type = theType;
+        this.priority = poriority;
+        this.description = description;
+        this.approval = approval;
+        this.comments = comments;
+    }
+    
+    
     // Getters and setters
     public long getId() {
         return id;
@@ -49,11 +64,11 @@ public class Request {
     }
 
     public Priority getPoriority() {
-        return poriority;
+        return priority;
     }
 
     public void setPoriority(Priority poriority) {
-        this.poriority = poriority;
+        this.priority = poriority;
     }
 
     public String getDescription() {
@@ -79,7 +94,20 @@ public class Request {
             return value;
         }
     }
+
+	public Boolean getApproval() {
+		return approval;
+	}
+
+	public void setApproval(Boolean approval) {
+		this.approval = approval;
+	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
 }
-
-
-

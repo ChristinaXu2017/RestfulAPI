@@ -1,9 +1,8 @@
-create table request
-(
-	id bigint not null,
-	theType varchar(50) not null,
-	poriority varchar(20) not null,
-	description varchar(500) not null,
-	primary key (id)
-
+CREATE TABLE requests (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    theType VARCHAR(50) NOT NULL,
+    poriority VARCHAR(20) NOT NULL,
+    description VARCHAR(500) NOT NULL,
+    approval VARCHAR(10) CHECK (approval IN ('TRUE', 'FALSE')),
+    comments VARCHAR(100)
 );
