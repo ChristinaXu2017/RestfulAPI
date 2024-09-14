@@ -4,34 +4,49 @@ import axios from 'axios'
 //     return axios.get('http://localhost:8080/hello-world-bean')
 // }
 
-const apiClient = axios.create(
-    {
-        baseURL: 'http://localhost:5050'
+const apiClient = axios.create({
+    //baseURL: process.env.REACT_APP_API_URL
+    baseURL: 'http://localhost:6000/maintenance',
+    headers: {
+        'Content-Type': 'application/json'
     }
-);
+});
 
-//same to: axios.get('http://localhost:8080/hello-world-bean')
-export const retrieveHelloWorldBean
-    = () => apiClient.get('/hello-world-bean')
+//same to: axios.get('http://localhost:6000/maintenance/test/1')
+export const retrieveTestRequest
+    = () => apiClient.get('/test/1')
 
-export const retrieveHelloWorldPathVariable
-    = (id) => apiClient.get(`/hello-world/path-variable/${id}`)
+// for User access
+export const retrieveUserRequestbyID = (id) =>
+    apiClient.get(`/user/${id}`, {
+        headers: { Authorization: 'Basic dXNlcjp1c2VycGFzc3dvcmQ=' }
+    });
 
-export const retrieveMiRNAsbyID
-    = (id) => apiClient.get(
-        `/miRNA/${id}`,
-        {
-            headers: {
-                Authorization: 'Basic dXNlcjpwYXNz'
-            }
+export const createUserRequest = (request) =>
+    apiClient.post('/user/request', request, {
+        headers: { Authorization: 'Basic dXNlcjp1c2VycGFzc3dvcmQ=' }
+    });
+
+
+// for Admin access
+export const retrieveAdimRequestbyPoriority = (prioroty) =>
+    apiClient.get(`/admin/${prioroty}`, {
+        headers: { Authorization: 'Basic YWRtaW46YWRtaW5wYXNzd29yZA==' }
+    });
+
+export const createAdminRequest = (request) =>
+    apiClient.post('/user/request', request, {
+        headers: {
+            Authorization: 'Basic YWRtaW46YWRtaW5wYXNzd29yZA=='
         }
-    )
+    });
 
-export const retrieveTestbyID
-    = (id) => apiClient.get(`/test/${id}`)
+export const updateAdminRequest = (request) =>
+    apiClient.put('/admin/update', request, {
+        headers: {
+            Authorization: 'Basic YWRtaW46YWRtaW5wYXNzd29yZA=='
+        }
+    });
 
-export const executeBasicAuthenticationService
-    = (token) => apiClient.get(`/basicauth`, {
-        headers: { Authorization: token }
-    }
-    )
+
+export default apiClient;
