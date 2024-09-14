@@ -4,9 +4,12 @@
 - Server setting during development refer to testCode/maintenance/src/main/resources/application.properties 
 
 ### Deployment
-- run as java application on eclipse, then access website: eg. http://localhost:6001/maintenance/test/1
-- or create an image by `mvn clean spring-boot:build-image`, and then launch it, eg.
+- run as Java application on Eclipse, local access:
+   -  eg. access one of endpoint http://localhost:6001/maintenance/test/1
+- or create an image, run inside the docker container
+   - eg. access the endpoint http://localhost:6000/maintenance/test/1
  ```
+  $ mvn clean spring-boot:build-image
   $ docker images 
   REPOSITORY                            TAG              IMAGE ID       CREATED         SIZE
   maintenance                           0.0.1-SNAPSHOT   8ce5e347672e   44 years ago    362MB
@@ -16,5 +19,5 @@
   CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                               NAMES
   417f9adbcd07   8c               "/cnb/process/web"       24 seconds ago   Up 23 seconds   0.0.0.0:6000->6001/tcp              backend
  ```
-  Now you can access the endpoint, eg. http://localhost:6000/maintenance/test/1
+  
 
