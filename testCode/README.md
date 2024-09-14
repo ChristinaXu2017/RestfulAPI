@@ -5,9 +5,11 @@
 
 ### Deployment
 - run as Java application on Eclipse, local access:
-   -  eg. access one of endpoint http://localhost:6001/maintenance/test/1
+   -  eg. access one of endpoints http://localhost:6001/maintenance/test/1
+   -  eg. document: http://localhost:6001/swagger-ui/index.html
 - or create an image, run inside the docker container
    - eg. access the endpoint http://localhost:6000/maintenance/test/1
+   - eg. document: http://localhost:6000/swagger-ui/index.html
  ```
   $ mvn clean spring-boot:build-image
   $ docker images 
@@ -19,5 +21,5 @@
   CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                               NAMES
   417f9adbcd07   8c               "/cnb/process/web"       24 seconds ago   Up 23 seconds   0.0.0.0:6000->6001/tcp              backend
  ```
-  
+ 
 
