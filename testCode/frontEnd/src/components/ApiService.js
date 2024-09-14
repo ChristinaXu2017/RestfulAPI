@@ -27,6 +27,10 @@ export const createUserRequest = (request) =>
         headers: { Authorization: 'Basic dXNlcjp1c2VycGFzc3dvcmQ=' }
     });
 
+export const updateUserRequest = (request) =>
+    apiClient.post('/user/update', request, {
+        headers: { Authorization: 'Basic dXNlcjp1c2VycGFzc3dvcmQ=' }
+    });
 
 // for Admin access
 export const retrieveAdimRequestbyPoriority = (prioroty) =>
@@ -47,6 +51,5 @@ export const updateAdminRequest = (request) =>
             Authorization: 'Basic YWRtaW46YWRtaW5wYXNzd29yZA=='
         }
     });
-
 
 export default apiClient;

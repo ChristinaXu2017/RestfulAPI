@@ -8,7 +8,7 @@ import LoginComponent from './Login';
 import LogoutComponent from './Logout';
 import ErrorComponent from './Error';
 import WelcomeComponent from './Welcome';
-import MiRNAComponent from './MiRNA';
+import RequestComponent from './CreateRequest';
 
 export default function MainApp() {
 
@@ -27,16 +27,16 @@ export default function MainApp() {
             <Route path='/' element={<LoginComponent />}></Route>
             <Route path='/login' element={<LoginComponent />}></Route>
             <Route path='/home/:username' element={<WelcomeComponent />}></Route>
-            <Route path='/mirna' element={<MiRNAComponent />} />
+            <Route path='/request' element={<RequestComponent />} />
+            <Route path='/userAccess' element={<RequestComponent />} />
+            <Route path='/adminAcess' element={<RequestComponent />} />
+
             <Route path='*' element={<ErrorComponent />}></Route>l
             <Route path='/logout' element={<LogoutComponent />} />
           </Routes>
           <FooterComponent />
         </BrowserRouter>
       </AuthProvider>
-
-
-
     </div>
   );
 }

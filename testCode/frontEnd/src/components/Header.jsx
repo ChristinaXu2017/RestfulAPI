@@ -25,7 +25,9 @@ function HeaderComponent() {
                                     <Link className="nav-link" href="https://bioweb01.qut.edu.au/benthTPM/index.html">Home</Link>
                                 </li>
                                 <li>
-                                    <Link className="nav-link" to="/miRNA">miRNA</Link>
+                                    <Link className="nav-link" to="/create">create request</Link>
+                                    <Link className="nav-link" to="/user">user access</Link>
+                                    <Link className="nav-link" to="/admin">Admin access</Link>
                                 </li>
                             </ul>
                         </div>
