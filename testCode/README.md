@@ -1,0 +1,20 @@
+## Backend
+- spring boot 3.3.3 with java 17 is used in this application
+- H2 test DB is used. database schema refer to testCode/maintenance/src/main/resources/schema.sql
+- Server setting during development refer to testCode/maintenance/src/main/resources/application.properties 
+
+### Deployment
+- run as java application on eclipse, then access website: eg. http://localhost:6001/maintenance/test/1
+- or create an image by `mvn clean spring-boot:build-image`, and then launch it, eg.
+ ```
+  $ docker images 
+  REPOSITORY                            TAG              IMAGE ID       CREATED         SIZE
+  maintenance                           0.0.1-SNAPSHOT   8ce5e347672e   44 years ago    362MB
+  $ docker run -d -p 6000:6001 --platform linux/amd64 --network my-network --name backend b1
+  47732f41d44bf418b10e09e58f016485dfeaa545e35cb18a5b456f58bbc7035e
+  $ docker ps
+  CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                               NAMES
+  417f9adbcd07   8c               "/cnb/process/web"       24 seconds ago   Up 23 seconds   0.0.0.0:6000->6001/tcp              backend
+ ```
+  Now you can access the endpoint, eg. http://localhost:6000/maintenance/test/1
+

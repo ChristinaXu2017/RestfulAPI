@@ -3,6 +3,8 @@ package org.gov.qld.maintenance.request;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,6 +13,7 @@ import jakarta.persistence.Table;
 public class Request {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String type;
 
@@ -26,8 +29,7 @@ public class Request {
     public Request() {}
 
     // for user post
-    public Request(long id, String theType, Priority poriority, String description) {
-        this.id = id;
+    public Request(String theType, Priority poriority, String description) {
         this.type = theType;
         this.priority = poriority;
         this.description = description;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/requests")
+@RequestMapping("/maintenance")
 public class RequestControl {
 	
     @Autowired
@@ -62,16 +62,21 @@ public class RequestControl {
 
 		return requestService.getRequests(priority);
 	}
+	
+	
+	// debug only
     
 	@PostMapping("/test/request")
 	public Request createRequest1( @RequestBody Request req) {		
 		return requestService.saveRequest(req);
 	}
 	  
-	
 	@GetMapping(value="/test/{order}")
-	public Request processRequest( @PathVariable int order) {		
-		return requestService.getFirstRequest();
+	public Request processRequest( @PathVariable int order) {	
+		Request first = requestService.getFirstRequest();
+		if (first == null)
+			return  new Request("fake type",Request.Priority.LOW,"fake description for test only!");
+		return first; 
 	}
 
 }
