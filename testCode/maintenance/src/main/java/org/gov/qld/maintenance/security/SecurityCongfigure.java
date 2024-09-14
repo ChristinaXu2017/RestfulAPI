@@ -15,7 +15,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityCongifur {
+public class SecurityCongfigure {
     @Value("${admin.username}")
     private String adminUsername;
 
@@ -37,16 +37,15 @@ public class SecurityCongifur {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
+        	.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/requests/admin/**").hasRole("ADMIN")
                 .requestMatchers("/requests/user/**").hasAnyRole("USER")
                 .requestMatchers("/requests/test/**").permitAll() // Allow access without authentication
-                //.requestMatchers(new AntPathRequestMatcher("/requests/test/*")).permitAll() // Allow access to /requests/test without authentication
                 .anyRequest().authenticated() // Require authentication for all other requests
             )
             .httpBasic(Customizer.withDefaults())
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .csrf().disable()
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) 
             .build();
     }
     
