@@ -23,7 +23,7 @@ public class RequestControl {
         this.requestService = requestService;
     }
     
-    @PostMapping
+    @PostMapping("/user/request")
     public ResponseEntity<Request> createRequests(@RequestBody Request request) {
         Request savedRequest = requestService.saveRequest(request);
         return ResponseEntity.ok(savedRequest);
@@ -57,24 +57,20 @@ public class RequestControl {
 		return requestService.getFirstRequest();
 	}
    
-	@GetMapping(value="/admin/{priority}")
-	public List<Request> accessRequest1(@PathVariable Request.Priority pri) {
-		
-		return requestService.getRequests(pri);
+	@GetMapping(value="/admin/{priority}")  //eg. http://localhost:6001/requests/admin/HIGH
+	public List<Request> accessRequest1(@PathVariable Request.Priority priority) {	 
+
+		return requestService.getRequests(priority);
 	}
     
 	@PostMapping("/test/request")
-	public Request createRequest1( @RequestBody Request req) {
-		
-		System.out.println(req.toString());
-		
+	public Request createRequest1( @RequestBody Request req) {		
 		return requestService.saveRequest(req);
 	}
 	  
 	
 	@GetMapping(value="/test/{order}")
-	public Request processRequest( @PathVariable int order) {
-		
+	public Request processRequest( @PathVariable int order) {		
 		return requestService.getFirstRequest();
 	}
 
