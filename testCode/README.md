@@ -10,6 +10,7 @@
 - or create an image, run inside the docker container
    - eg. access the endpoint http://localhost:6000/maintenance/test/1
    - eg. document: http://localhost:6000/swagger-ui/index.html
+     - login by (user, userpassword)
  ```
   $ mvn clean spring-boot:build-image
   $ docker images 
@@ -21,5 +22,5 @@
   CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                               NAMES
   417f9adbcd07   8c               "/cnb/process/web"       24 seconds ago   Up 23 seconds   0.0.0.0:6000->6001/tcp              backend
  ```
- 
+  - the network in docker sometimes not stable, 
 
