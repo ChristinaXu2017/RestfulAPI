@@ -13,7 +13,7 @@
   $ docker images 
   REPOSITORY                            TAG              IMAGE ID       CREATED         SIZE
   maintenance                           0.0.1-SNAPSHOT   8ce5e347672e   44 years ago    362MB
-  $ docker run -d -p 6000:6001 --platform linux/amd64 --network my-network --name backend b1
+  $ docker run -d -p 6000:6001 --platform linux/amd64 --network my-network --name backend 8c
   47732f41d44bf418b10e09e58f016485dfeaa545e35cb18a5b456f58bbc7035e
   $ docker ps
   CONTAINER ID   IMAGE            COMMAND                  CREATED          STATUS          PORTS                               NAMES
