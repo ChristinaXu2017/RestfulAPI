@@ -61,3 +61,9 @@ public class HairPinRestController {
 	}	 
 	
 }
+
+@ConfigurationProperties(prefix = "poxy-service")
+Record  PoxyServiceCongfiguration(String url, String user, String key) {}
+
+
+
