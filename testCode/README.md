@@ -30,6 +30,6 @@
 
  ```
  npm install  # only once
- PORT=3030 && npm start
+ PORT=3050 npm start
  ```
  
