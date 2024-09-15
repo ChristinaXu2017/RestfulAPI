@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/maintenance")
-public class RequestControl {
+public class RequestController {
 	
     @Autowired
     private final RequestService requestService;
 
 
-    public RequestControl(RequestService requestService) {
+    public RequestController(RequestService requestService) {
         this.requestService = requestService;
     }
     
@@ -57,7 +57,7 @@ public class RequestControl {
 		return requestService.getFirstRequest();
 	}
    
-	@GetMapping(value="/admin/{priority}")  //eg. http://localhost:6001/requests/admin/HIGH
+	@GetMapping(value="/admin/{priority}")  //eg. http://localhost:6001/maintenance/admin/HIGH
 	public List<Request> accessRequest1(@PathVariable Request.Priority priority) {	 
 
 		return requestService.getRequests(priority);

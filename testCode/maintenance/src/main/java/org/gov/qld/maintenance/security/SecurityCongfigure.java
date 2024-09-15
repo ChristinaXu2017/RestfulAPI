@@ -39,9 +39,9 @@ public class SecurityCongfigure {
         return http
         	.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/requests/admin/**").hasRole("ADMIN")
-                .requestMatchers("/requests/user/**").hasAnyRole("USER")
-                .requestMatchers("/requests/test/**").permitAll() // Allow access without authentication
+                .requestMatchers("/maintenance/admin/**").hasRole(adminRoles)
+                .requestMatchers("/maintenance/user/**").hasAnyRole(userRoles)
+                .requestMatchers("/maintenance/test/**").permitAll() // Allow access without authentication
                 .anyRequest().authenticated() // Require authentication for all other requests
             )
             .httpBasic(Customizer.withDefaults())
