@@ -25,3 +25,11 @@
  ```
 
 
+## Frontend
+- react 18.2.0 with  Node.js v18.17.0
+
+ ```
+ npm install  # only once
+ PORT=3030 && npm start
+ ```
+ 
