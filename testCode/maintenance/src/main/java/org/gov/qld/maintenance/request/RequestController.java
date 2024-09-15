@@ -64,8 +64,7 @@ public class RequestController {
 	}
 	
 	
-	// debug only
-    
+	// debug only    
 	@PostMapping("/test/request")
 	public Request createRequest1( @RequestBody Request req) {		
 		return requestService.saveRequest(req);
@@ -78,5 +77,11 @@ public class RequestController {
 			return  new Request("fake type",Request.Priority.LOW,"fake description for test only!");
 		return first; 
 	}
+	
+	//use to check whether the token on http header works or not
+	@GetMapping(path = "/basicauth")
+	public String basicAuthCheck() {
+		return "Success"; 
+	}	 
 
 }

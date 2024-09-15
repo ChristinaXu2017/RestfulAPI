@@ -1,17 +1,24 @@
-import { useState } from 'react'
-import { createUserRequest } from './ApiService'
+import React, { useEffect, useState } from 'react';
+import { createUserRequest, retrieveTestRequest } from './ApiService'
 
 export default function RequestComponent() {
-
-    const [request, setRequest] = useState({
-        type: 'requrest type',
-        poriority: 'LOW',
-        description: 'details of your request'
-    });
-
+    // const [request, setRequest] = useState({ type: '', priority: 'LOW', description: '' });
+    const [request, setRequest] = useState([]);
     const [newRequestId, setNewRequestId] = useState(null);
 
-    const [requests, setRequests] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await retrieveTestRequest()  // Replace 1 with the desired order value
+                setRequest([response.data]); // Assuming the response is a single request object
+            } catch (error) {
+                console.error('Error fetching request:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -26,10 +33,10 @@ export default function RequestComponent() {
         createUserRequest(request)
             .then(response => {
                 console.log('Request created:', response.data);
-                setRequests(prevRequests => [...prevRequests, response.data]);
+                setRequest(prevRequests => [...prevRequests, response.data]);
                 setNewRequestId(response.data.id);
                 // Clear the form
-                setRequest({ type: '', poriority: 'LOW', description: '' });
+                //setRequest({ type: '', poriority: 'LOW', description: '' });
             })
             .catch(error => {
                 console.error('Error creating request:', error);
@@ -40,8 +47,7 @@ export default function RequestComponent() {
     return (
         <div>
             <h1>Please input your request in below form </h1>
-            <form onSubmit={handleSubmit}>
-
+            <form onSubmit={handleSubmit} className="form-row">
                 <div>
                     <label>Type:</label>
                     <input type="text" name="type" value={request.type} onChange={handleChange} required />
@@ -82,7 +88,7 @@ export default function RequestComponent() {
                     </tr>
                 </thead>
                 <tbody>
-                    {requests.map(req => (
+                    {request.map(req => (
                         <tr key={req.id}>
                             <td>{req.id}</td>
                             <td>{req.type}</td>
