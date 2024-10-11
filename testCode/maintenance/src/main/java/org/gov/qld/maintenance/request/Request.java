@@ -3,6 +3,8 @@ package org.gov.qld.maintenance.request;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,6 +13,7 @@ import jakarta.persistence.Table;
 public class Request {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String type;
 
@@ -26,10 +29,9 @@ public class Request {
     public Request() {}
 
     // for user post
-    public Request(long id, String theType, Priority poriority, String description) {
-        this.id = id;
+    public Request(String theType, Priority priority, String description) {
         this.type = theType;
-        this.priority = poriority;
+        this.priority = priority;
         this.description = description;
         this.approval = null;
         this.comments = null;
@@ -45,40 +47,6 @@ public class Request {
         this.comments = comments;
     }
     
-    
-    // Getters and setters
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Priority getPoriority() {
-        return priority;
-    }
-
-    public void setPoriority(Priority poriority) {
-        this.priority = poriority;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public enum Priority {
         LOW("low"),
         MED("med"),
@@ -109,5 +77,37 @@ public class Request {
 
 	public void setComments(String comments) {
 		this.comments = comments;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Priority getPriority() {
+		return priority;
+	}
+
+	public void setPriority(Priority priority) {
+		this.priority = priority;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

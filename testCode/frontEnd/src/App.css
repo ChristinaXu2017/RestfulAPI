@@ -287,3 +287,15 @@ th {
   height: 100vh;
   /* Use the full viewport height */
 }
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  /* Adjust the gap between items as needed */
+}
+
+.form-row>div {
+  flex: 1;
+  /* Adjust the flex value as needed */
+}

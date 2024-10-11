@@ -13,15 +13,6 @@ public class MaintenanceApplication {
 		SpringApplication.run(MaintenanceApplication.class, args);
 	}
 	
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**")
-					.allowedMethods("*")
-					.allowedOrigins("*"); //NOT RECOMMENDED FOR PRODUCTION
-			}
-		};
-	}	
+
 
 }
