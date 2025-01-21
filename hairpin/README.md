@@ -35,7 +35,9 @@ create jar   or keep develpping from Eclipse, eg. Version: 2024-03 (4.31.0)
 ??? spring.main.headless=true
 The error message you're seeing indicates that there is a NullPointerException related to font configuration in the Java AWT (Abstract Window Toolkit) subsystem. This is often related to running Java applications in headless environments, such as Docker containers, where there is no graphical user interface.
 
-
+#### test REST API
+- download postman and send request: eg. http://localhost:8080/api/input/upload
+- using crul: eg curl -X POST "http://localhost:8080/api/input/upload" -F "uploadFile=/path/to/your/file.zip" -F "s3Key=your/s3/key"
 
 ### launch react app on VS code
 - cd /.../RestfulAPI/hairpin/hairpin-front
