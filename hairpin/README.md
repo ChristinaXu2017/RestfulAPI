@@ -37,7 +37,7 @@ The error message you're seeing indicates that there is a NullPointerException r
 
 #### test REST API
 - download postman and send request: eg. http://localhost:8080/api/input/upload
-- using crul: eg curl -X POST "http://localhost:8080/api/input/upload" -F "uploadFile=/path/to/your/file.zip" -F "s3Key=your/s3/key"
+- using ` crul: eg curl -X POST "http://localhost:8080/api/input/upload" -F "uploadFile=/path/to/your/file.zip" -F "s3Key=your/s3/key" `
 
 ### launch react app on VS code
 - cd /.../RestfulAPI/hairpin/hairpin-front
