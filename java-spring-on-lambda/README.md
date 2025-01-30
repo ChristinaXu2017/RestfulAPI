@@ -17,6 +17,19 @@ To convert [java-spring-on-lambda/template.yaml](https://github.com/jeastham1993
 - source = "terraform-aws-modules/apigateway-v2/aws" refer to branch of `website ::CapsidBuilder/capbuild-web/terraform/api.tf`
 - [Terraform Modules git repo](https://github.com/terraform-aws-modules)
 
+## Proxy
+### RDS proxy
+put a layer in front of your database to act as a proxy, hence your lambda function can reuse connections that already exists. 
+
+### dynamoDB
+DynamoDB is designed to handle high request rates and can scale automatically to accommodate increased traffic. no extra proxy required. 
+
+### snapStart
+AWS Lambda SnapStart is a feature designed to improve the startup performance of Java-based AWS Lambda functions. It reduces the cold start latency by initializing the function ahead of time and caching a snapshot of the initialized execution environment. When the function is invoked, AWS Lambda can quickly restore the execution environment from the snapshot, significantly reducing the startup time.
+
+```
+aws lambda update-function-configuration --function-name my-java-function --snap-start ApplyOn=PublishedVersions
+```
 
 ## credential 
 ### Secret Manager
@@ -34,7 +47,8 @@ store database credential here
 - store environment parameters
   refer to java code [software.amazon.awssdk.services.ssm.*](https://github.com/jeastham1993/java-spring-on-lambda/blob/main/src/main/java/com/product/api/ApplicationConfiguration.java)
 
-
+### cognito 
+refer to https://github.com/GSI-Xapiens-CSIRO/BGSI-GeneticAnalysisSupportPlatformIndonesia-GASPI/blob/main/cognito/outputs.tf
 
 
 
