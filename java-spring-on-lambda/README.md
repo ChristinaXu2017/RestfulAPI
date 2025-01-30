@@ -25,7 +25,6 @@ store database credential here
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>secretsmanager </artifactId>
-            <version>2.18.16</version>
         </dependency>
 ```
 
