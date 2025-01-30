@@ -18,7 +18,8 @@ To convert [java-spring-on-lambda/template.yaml](https://github.com/jeastham1993
 - [Terraform Modules git repo](https://github.com/terraform-aws-modules)
 
 
-## Secret Manager
+## credential 
+### Secret Manager
 store database credential here
 - add dependency
 ```
@@ -27,8 +28,11 @@ store database credential here
             <artifactId>secretsmanager </artifactId>
         </dependency>
 ```
-
-
+- java code examples: [AwsSecret.java](https://github.com/jeastham1993/java-spring-on-lambda/blob/main/src/main/java/com/product/api/AwsSecret.java) and [JpaConfiguration.java](https://github.com/jeastham1993/java-spring-on-lambda/blob/main/src/main/java/com/product/api/JpaConfiguration.java)
+  
+### aws parameter store
+- store environment parameters
+  refer to java code [software.amazon.awssdk.services.ssm.*](https://github.com/jeastham1993/java-spring-on-lambda/blob/main/src/main/java/com/product/api/ApplicationConfiguration.java)
 
 
 
