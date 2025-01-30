@@ -18,7 +18,8 @@ To convert [java-spring-on-lambda/template.yaml](https://github.com/jeastham1993
 - [Terraform Modules git repo](https://github.com/terraform-aws-modules)
 
 
-
+## Secret Manager
+- store database credential here
 
 
 
