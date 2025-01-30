@@ -19,7 +19,15 @@ To convert [java-spring-on-lambda/template.yaml](https://github.com/jeastham1993
 
 
 ## Secret Manager
-- store database credential here
+store database credential here
+- add dependency
+```
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>secretsmanager </artifactId>
+            <version>2.18.16</version>
+        </dependency>
+```
 
 
 
