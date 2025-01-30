@@ -10,6 +10,8 @@ run your SpringBoot applications on AWS Lambda in as little as 10 minutes withou
  
 ## Quick start Spring Boot3
 - my current spring boot is <version>3.4.1</version> in pom.xml
+- use the aws-serverless-java-container, refer to [quick start Spring Boot3](https://github.com/aws/serverless-java-container/wiki/Quick-start---Spring-Boot3)
+- covert my project to 
 
 ## AWS SAM
 - Abstraction: SAM provides higher-level abstractions specifically for serverless applications, such as AWS::Serverless::Function, AWS::Serverless::Api, and AWS::Serverless::SimpleTable. These abstractions simplify the process of defining and deploying serverless applications.
