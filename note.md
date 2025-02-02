@@ -8,8 +8,10 @@ refer to [spring boot feature](https://spring.io/projects/spring-boot)
 - It provides production-ready features like health checks, metrics, etc., through Spring Boot Actuator.
 
 ## React issue
-- When use npx create-react-app React app, it keeps complain "Could not resolve dependency", although npm list react shows react@19.0.0 and npm list @testing-library/react shows @testing-library/react@16.1.0; try below command
+- create-react-app is deprecated. You must use Vite to initialize a project. https://medium.com/@miahossain8888/how-to-create-a-react-app-with-vite-571883b100ef
 ```
-npm config set legacy-peer-deps true
-npx create-react-app vacc-build
+npm create vite@latest your-app -- --template react-ts
+cd your-app
+npm install
+npm run dev
 ```
